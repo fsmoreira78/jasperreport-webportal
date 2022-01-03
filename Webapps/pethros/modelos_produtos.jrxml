@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2017-10-31T11:55:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modelos_produtos" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="64845262-b806-4b32-bc69-783be6e34e35">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Detail" forecolor="#000000" backcolor="#000000" hTextAlign="Left" pattern="" fontName="Arial" fontSize="8"/>
+	<parameter name="p_cod_inquilino" class="java.lang.String"/>
+	<parameter name="p_cod_modelo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select p.dsc_produto,
+  decode(mp.flg_ativo,'S','SIM','NÃO') flg_ativo
+from tb_mdlo_produto mp
+join tb_produto p on (p.cod_inquilino = mp.cod_inquilino and p.cod_produto = mp.cod_produto)
+where mp.cod_inquilino =  $P{p_cod_inquilino} 
+  and mp.cod_modelo =  $P{p_cod_modelo} ]]>
+	</queryString>
+	<field name="DSC_PRODUTO" class="java.lang.String"/>
+	<field name="FLG_ATIVO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="180" height="12" uuid="8c67f1ad-f35e-4625-acc6-0e3a91db0014">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DSC_PRODUTO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

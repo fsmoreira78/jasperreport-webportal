@@ -1,0 +1,11 @@
+__files
+__release
+__history
+*metadata
+Win32
+Win64
+*.dll 
+*.dcu 
+*.identcache
+*.local
+*.map

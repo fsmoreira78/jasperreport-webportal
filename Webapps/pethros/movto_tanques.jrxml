@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="movto_tanques" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="134"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="857"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Title" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="16" isBold="true"/>
+	<style name="Title2" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
+	<style name="SubTitle" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="10" isBold="false"/>
+	<style name="Column header" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Arial" fontSize="8" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Arial" fontSize="8"/>
+	<style name="Row" mode="Transparent" fontName="Arial" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#DCDCDC"/>
+		</conditionalStyle>
+	</style>
+	<style name="Footer" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
+	<parameter name="p_nome_inquilino" class="java.lang.String"/>
+	<parameter name="p_inquilino" class="java.lang.String"/>
+	<parameter name="p_inicio" class="java.lang.String"/>
+	<parameter name="p_termino" class="java.lang.String"/>
+	<parameter name="p_tanque" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[select t.dsc_tanque,
+  t.num_automacao,
+  p.dsc_produto,
+  mtl.qtd_capacidade,
+  mtl.dta_leitura,  
+  mtl.num_temperatura,
+  mtl.qtd_vazio,
+  mtl.num_nivel_agua,
+  mtl.qtd_agua,
+  mtl.num_nivel_produto,
+  mtl.qtd_produto,
+  mtl.qtd_produto_corrigido,
+  mtl.pct_produto
+from tb_mvto_tanque_leitura mtl
+join tb_tanque t on (t.cod_inquilino = mtl.cod_inquilino and t.cod_tanque = mtl.cod_tanque)
+join tb_produto p on (p.cod_inquilino = mtl.cod_inquilino and p.cod_produto = mtl.cod_produto)
+where mtl.cod_inquilino = $P{p_inquilino} 
+  and mtl.dta_leitura >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
+  and mtl.dta_leitura < to_date($P{p_termino},'ddmmyyyyhh24mi')
+  and mtl.cod_tanque = nvl($P{p_tanque},mtl.cod_tanque)
+order by t.num_automacao, mtl.dta_leitura]]>
+	</queryString>
+	<field name="DSC_TANQUE" class="java.lang.String"/>
+	<field name="NUM_AUTOMACAO" class="java.lang.String"/>
+	<field name="DSC_PRODUTO" class="java.lang.String"/>
+	<field name="QTD_CAPACIDADE" class="java.math.BigDecimal"/>
+	<field name="DTA_LEITURA" class="java.sql.Timestamp"/>
+	<field name="NUM_TEMPERATURA" class="java.math.BigDecimal"/>
+	<field name="QTD_VAZIO" class="java.math.BigDecimal"/>
+	<field name="NUM_NIVEL_AGUA" class="java.math.BigDecimal"/>
+	<field name="QTD_AGUA" class="java.math.BigDecimal"/>
+	<field name="NUM_NIVEL_PRODUTO" class="java.math.BigDecimal"/>
+	<field name="QTD_PRODUTO" class="java.math.BigDecimal"/>
+	<field name="QTD_PRODUTO_CORRIGIDO" class="java.math.BigDecimal"/>
+	<field name="PCT_PRODUTO" class="java.math.BigDecimal"/>
+	<group name="Grupo Tanque">
+		<groupExpression><![CDATA[$F{DSC_TANQUE}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="2" width="554" height="14" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="f24569ed-2518-465a-a480-0c195aacd180">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textField textAdjust="StretchHeight">
+						<reportElement style="SubTitle" x="2" y="0" width="542" height="14" forecolor="#000000" uuid="5b7282d2-5169-4db4-b85a-e2391d4d4e66">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						</reportElement>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font isBold="false" isItalic="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{DSC_TANQUE}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="5">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Grupo Produto">
+		<groupExpression><![CDATA[$F{DSC_PRODUTO}]]></groupExpression>
+		<groupHeader>
+			<band height="12">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<frame>
+					<reportElement key="" mode="Opaque" x="0" y="0" width="554" height="12" forecolor="#C8C8C8" backcolor="#C8C8C8" uuid="37294c7e-018c-4350-ae68-6f86fcbdf134">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<staticText>
+						<reportElement style="Column header" x="1" y="0" width="60" height="12" forecolor="#000000" uuid="d624091d-072f-42cb-a0bf-d15e34abe3eb">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						</reportElement>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[PRODUTO]]></text>
+					</staticText>
+					<textField>
+						<reportElement key="" style="Column header" positionType="Float" x="61" y="0" width="202" height="12" uuid="c09ae599-41a3-4b19-8a1e-72af405a3627"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{DSC_PRODUTO}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement style="Column header" x="266" y="0" width="60" height="12" forecolor="#000000" uuid="9d25dcd4-8215-4546-8fd8-4491a5102dad">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						</reportElement>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[CAPACIDADE]]></text>
+					</staticText>
+					<textField pattern="#,##0">
+						<reportElement key="" style="Column header" positionType="Float" x="326" y="0" width="94" height="12" uuid="5e636608-3e25-4f4b-abb4-79784ff2db00">
+							<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						</reportElement>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{QTD_CAPACIDADE}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="5">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="55" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="40" width="554" height="14" forecolor="#FFFFFF" backcolor="#505050" uuid="938cec35-ed36-4185-97ad-9723a9d62146">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+			</frame>
+			<staticText>
+				<reportElement key="" style="Column header" x="84" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="0a70f3f7-8662-44b6-895a-d5d77d3959d3">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Temperatura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Column header" x="202" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="ec4a6a17-8167-45f3-b7bb-bbaaeaea90d5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nível Água]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Column header" x="1" y="41" width="62" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Data / Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Column header" x="261" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="6dbb56ba-c50c-4cb7-bb66-de2bc459b9f1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vol. Água]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Column header" x="320" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="f07bd22c-eca0-4dbb-a347-cd02ee3033f5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nível Prod.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Column header" x="143" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="139bdfa7-9e38-4468-b0b5-c59c50116335">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vol. Vazio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Column header" x="379" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="d333a667-c7cf-4d8a-b0d6-17f7a386dadc">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vol. Bruto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Column header" x="438" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="bcf8fca3-61d8-4604-a843-529b0db584d3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vol. Corrigido]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="1" width="554" height="36" forecolor="#C8C8C8" backcolor="#FCFCFC" uuid="d8d9e644-3a32-491d-97cb-a277aff17133">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement style="Title" mode="Transparent" x="2" y="0" width="298" height="18" forecolor="#1E1E1E" backcolor="#FFFFFF" uuid="27d8f6ee-f0a9-44f6-a160-1763c3b00f30">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="SansSerif" size="11"/>
+					</textElement>
+					<text><![CDATA[Relatório de Movimentações dos Tanques]]></text>
+				</staticText>
+				<textField pattern="">
+					<reportElement style="Title2" x="2" y="20" width="298" height="15" forecolor="#1E1E1E" uuid="1c5c9253-27a7-411e-ac52-014af7e4d093">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{p_nome_inquilino}]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement style="Footer" x="377" y="3" width="175" height="15" forecolor="#1E1E1E" uuid="7ba9d2d6-2bf1-4b65-bde7-85624d1bfd40">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Período " + (new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new SimpleDateFormat("ddMMyyyyHHmm").parse($P{p_inicio})))]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement style="Footer" x="377" y="20" width="175" height="15" forecolor="#1E1E1E" uuid="8be40ba0-5f22-4182-8bef-d5f78791dd9f">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA["à " + (new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new SimpleDateFormat("ddMMyyyyHHmm").parse($P{p_termino})))]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement key="" style="Column header" x="502" y="41" width="50" height="12" forecolor="#FFFFFF" uuid="d2e42713-8ac5-4431-b98a-7d51bb22d524">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[% Produto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="554" height="12" uuid="34a2ae4b-4055-476b-8676-d499f6af510b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textField textAdjust="StretchHeight" pattern="#,##0.0&apos; cm&apos;">
+					<reportElement style="Detail" positionType="Float" x="202" y="0" width="50" height="12" uuid="566d456d-5a4c-4200-aded-45dcf862f8e2">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{NUM_NIVEL_AGUA}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy HH:mm">
+					<reportElement style="Detail" positionType="Float" x="1" y="0" width="78" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b"/>
+					<textFieldExpression><![CDATA[$F{DTA_LEITURA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement style="Detail" positionType="Float" x="261" y="0" width="50" height="12" uuid="7dbbc041-7a09-4602-b474-bc2e951975ac"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{QTD_AGUA}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" pattern="#,##0.0&apos; cm&apos;" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="320" y="0" width="50" height="12" uuid="d7b60f73-d3fe-4dd0-9b96-764e74b0190a"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{NUM_NIVEL_PRODUTO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" pattern="#,##0.00">
+					<reportElement style="Detail" positionType="Float" x="143" y="0" width="50" height="12" uuid="63508e4d-192c-45bf-b009-d1c9919d916c">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{QTD_VAZIO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="379" y="0" width="50" height="12" uuid="3efd965c-a3aa-4074-9883-c5a0e3dbd4e3"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{QTD_PRODUTO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="438" y="0" width="50" height="12" uuid="bd07ae73-ccf4-4a84-bec3-161bb7dab5ff">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{QTD_PRODUTO_CORRIGIDO}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" pattern="#,##0.00&apos; ºC&apos;">
+					<reportElement style="Detail" positionType="Float" x="84" y="0" width="50" height="12" uuid="c61e99a1-f745-4bcb-9424-22b5a1676634">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{NUM_TEMPERATURA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00&apos; %&apos;" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="502" y="0" width="50" height="12" uuid="97d5ef22-824e-4d05-a583-9d318cd54164">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{PCT_PRODUTO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="554" height="20" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textField evaluationTime="Report">
+					<reportElement key="" style="Footer" x="520" y="3" width="33" height="15" uuid="b5521ea6-5f36-4864-856f-58d0bcd011f2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement key="" style="Footer" x="433" y="3" width="87" height="15" uuid="e625ea3c-1741-4cfe-81cf-fbbdd00162c8">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Footer" x="3" y="3" width="197" height="15" uuid="0c9f7e91-d3f5-47f9-82b7-0b2b3a43a5d6">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Footer" x="209" y="3" width="149" height="15" uuid="9ffa10b5-a64a-47cc-9258-e57820e4e061">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[www.pethros.com.br]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
