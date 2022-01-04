@@ -47,7 +47,7 @@
  a.num_encerrante num_encerrante_final,
  fr.nom_pessoa nom_frentista,
  op.nom_pessoa nom_operador,
- to_char(o.num_operacao) || ' - ' || substr(o.dsc_operacao,1,8) dsc_operacao,
+ to_char(o.num_operacao) || ' - ' || substr(o.dsc_operacao,1,6) dsc_operacao,
  o.num_operacao
 from tb_abast a
 join tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
