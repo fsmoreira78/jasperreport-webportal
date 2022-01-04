@@ -297,7 +297,7 @@ order by t.num_automacao, mtl.dta_leitura]]>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMM yyyy - HH:mm:ss").format(new java.util.Date()) + "    "]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMM yyyy - HH:mm:ss", new java.util.Locale("pt","BR")).format(new java.util.Date()) + "    "]]></textFieldExpression>
 				</textField>
 				<textField pattern="">
 					<reportElement style="Title2" x="3" y="35" width="348" height="15" forecolor="#1E1E1E" uuid="11b17562-dc0e-46ab-aeb4-0d080f47e3c0">
