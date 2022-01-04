@@ -4,6 +4,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="134"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="857"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Title" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="Title2" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
 	<style name="SubTitle" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="10" isBold="false"/>
@@ -46,7 +47,8 @@
  a.num_encerrante num_encerrante_final,
  fr.nom_pessoa nom_frentista,
  op.nom_pessoa nom_operador,
- o.dsc_operacao
+ o.dsc_operacao,
+ o.num_operacao
 from tb_abast a
 join tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
 join tb_produto p on (p.cod_inquilino = a.cod_inquilino and p.cod_produto = a.cod_produto)
@@ -84,6 +86,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 	<field name="NOM_FRENTISTA" class="java.lang.String"/>
 	<field name="NOM_OPERADOR" class="java.lang.String"/>
 	<field name="DSC_OPERACAO" class="java.lang.String"/>
+	<field name="NUM_OPERACAO" class="java.lang.Integer"/>
 	<variable name="SOMAR_QTDE_PRODUTO" class="java.math.BigDecimal" resetType="Group" resetGroup="Grupo Produto" calculation="Sum">
 		<variableExpression><![CDATA[$F{QTD_ABAST}]]></variableExpression>
 	</variable>
@@ -549,7 +552,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{DSC_OPERACAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{NUM_OPERACAO} + "-" + $F{DSC_OPERACAO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="#,##0.00">
 					<reportElement style="Detail" positionType="Float" x="56" y="0" width="55" height="12" uuid="c61e99a1-f745-4bcb-9424-22b5a1676634">
