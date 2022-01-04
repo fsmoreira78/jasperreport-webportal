@@ -71,11 +71,11 @@ where v.cod_inquilino =  $P{p_inquilino}
 						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					</reportElement>
 					<textField textAdjust="StretchHeight">
-						<reportElement style="SubTitle" x="3" y="0" width="541" height="14" forecolor="#FFFFFF" uuid="5b7282d2-5169-4db4-b85a-e2391d4d4e66">
+						<reportElement style="SubTitle" x="3" y="0" width="541" height="14" forecolor="#1E1E1E" uuid="5b7282d2-5169-4db4-b85a-e2391d4d4e66">
 							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 						</reportElement>
 						<textElement textAlignment="Center" verticalAlignment="Middle">
-							<font isBold="false"/>
+							<font isBold="false" isItalic="true"/>
 						</textElement>
 						<textFieldExpression><![CDATA["Proprietário: " + $F{NOM_PROPRIETARIO}]]></textFieldExpression>
 					</textField>
@@ -87,7 +87,7 @@ where v.cod_inquilino =  $P{p_inquilino}
 				<frame>
 					<reportElement mode="Opaque" x="0" y="0" width="554" height="12" forecolor="#969696" backcolor="#969696" uuid="537c46fc-aa51-470a-aacf-a90da0c5cedc"/>
 					<staticText>
-						<reportElement style="Column header" x="1" y="0" width="99" height="12" forecolor="#FFFFFF" uuid="0ee525dd-6dfc-49f3-b48c-bbc053e4ee1c">
+						<reportElement style="Column header" x="1" y="0" width="99" height="12" forecolor="#1E1E1E" uuid="0ee525dd-6dfc-49f3-b48c-bbc053e4ee1c">
 							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 						</reportElement>
 						<textElement>
@@ -96,10 +96,10 @@ where v.cod_inquilino =  $P{p_inquilino}
 						<text><![CDATA[TOTAL PROPRIETÁRIO:]]></text>
 					</staticText>
 					<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="true">
-						<reportElement style="Detail" positionType="Float" x="100" y="0" width="34" height="12" forecolor="#FFFFFF" uuid="4f6e08ed-22c1-4c8a-a657-06d7663a8b4b">
+						<reportElement style="Detail" positionType="Float" x="100" y="0" width="34" height="12" forecolor="#1E1E1E" uuid="4f6e08ed-22c1-4c8a-a657-06d7663a8b4b">
 							<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 						</reportElement>
-						<textElement textAlignment="Right"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle"/>
 						<textFieldExpression><![CDATA[$V{Grupo Proprietario_COUNT}]]></textFieldExpression>
 					</textField>
 				</frame>
