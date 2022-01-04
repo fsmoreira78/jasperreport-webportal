@@ -18,6 +18,9 @@
 	</style>
 	<style name="Footer" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
 	<parameter name="p_tipo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="p_tipo_where" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[" a.flg_tipo in (" + $P{p_tipo} +")"]]></defaultValueExpression>
+	</parameter>
 	<parameter name="p_nome_inquilino" class="java.lang.String"/>
 	<parameter name="p_inquilino" class="java.lang.String"/>
 	<parameter name="p_empresa" class="java.lang.String"/>
@@ -63,7 +66,7 @@ where a.cod_inquilino = $P{p_inquilino}
   and a.cod_empresa =  $P{p_empresa} 
   and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
   and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
-  and a.flg_tipo in ($P!{p_tipo})
+  and $P!{p_tipo_where}
   and a.cod_bico = nvl($P{p_bico},a.cod_bico)
   and nvl(a.cod_veiculo,0) = nvl($P{p_veiculo},nvl(a.cod_veiculo,0))
   and nvl(a.cod_proprietario,0) = nvl($P{p_proprietario},nvl(a.cod_proprietario,0))  
@@ -452,7 +455,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA["Relatório de " + ($P{p_tipo}.equals("TR") ? "Transferências" :  "Abastecimentos") ]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Relatório de " + ($P{p_tipo}.equals("TR") ? "Transferências" :  "Abastecimentos")]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
