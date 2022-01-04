@@ -17,7 +17,7 @@
 		</conditionalStyle>
 	</style>
 	<style name="Footer" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
-	<parameter name="p_tipo" class="java.lang.String"/>
+	<parameter name="p_tipo" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="p_nome_inquilino" class="java.lang.String"/>
 	<parameter name="p_inquilino" class="java.lang.String"/>
 	<parameter name="p_empresa" class="java.lang.String"/>
