@@ -129,7 +129,7 @@ order by p.nom_pessoa, m.dsc_modelo,  a.dta_abast_hora]]>
 						<textElement textAlignment="Center" verticalAlignment="Middle">
 							<font isBold="false" isItalic="true"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{NOM_PROPRIETARIO}]]></textFieldExpression>
+						<textFieldExpression><![CDATA["Proprietário: " + $F{NOM_PROPRIETARIO}]]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -543,6 +543,13 @@ order by p.nom_pessoa, m.dsc_modelo,  a.dta_abast_hora]]>
 				<reportElement mode="Transparent" x="-10" y="0" width="822" height="10" forecolor="#1E1E1E" backcolor="#C8C8C8" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<staticText>
 					<reportElement style="Footer" x="325" y="0" width="173" height="10" uuid="9ffa10b5-a64a-47cc-9258-e57820e4e061">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>

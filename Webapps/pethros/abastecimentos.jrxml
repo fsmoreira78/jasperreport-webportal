@@ -223,7 +223,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				</reportElement>
 			</frame>
 			<staticText>
-				<reportElement style="Column header" x="0" y="55" width="55" height="12" forecolor="#FFFFFF" uuid="b8537c87-323a-4690-a20c-e2b1ac260191">
+				<reportElement style="Column header" x="3" y="55" width="52" height="12" forecolor="#FFFFFF" uuid="b8537c87-323a-4690-a20c-e2b1ac260191">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
