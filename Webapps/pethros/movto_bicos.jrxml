@@ -50,7 +50,7 @@
  a.num_encerrante - a.qtd_abast num_encerrante_inicial,
  a.num_encerrante num_encerrante_final,
  fr.nom_pessoa nom_frentista,
- to_char(o.num_operacao) || ' - ' || substr(o.dsc_operacao,1,10) dsc_operacao
+ to_char(o.num_operacao) || ' - ' || o.dsc_operacao dsc_operacao
 from tb_abast a
 join tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
 join tb_produto p on (p.cod_inquilino = a.cod_inquilino and p.cod_produto = a.cod_produto)
@@ -124,7 +124,7 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 						<text><![CDATA[TOTAL POR BICO]]></text>
 					</staticText>
 					<textField pattern="#,##0.00">
-						<reportElement key="" style="Detail" positionType="Float" x="110" y="0" width="60" height="12" forecolor="#FFFFFF" uuid="e3d3b125-fd3e-4aa5-93ce-899348152884"/>
+						<reportElement key="" style="Detail" positionType="Float" x="99" y="0" width="60" height="12" forecolor="#FFFFFF" uuid="e3d3b125-fd3e-4aa5-93ce-899348152884"/>
 						<textElement textAlignment="Right">
 							<font isBold="false"/>
 						</textElement>
@@ -171,7 +171,7 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
 					<textField pattern="#,##0.00">
-						<reportElement key="" style="Detail" positionType="Float" x="110" y="0" width="60" height="12" uuid="3bf4978f-2a9a-45c9-b1ab-31adeb9838f3"/>
+						<reportElement key="" style="Detail" positionType="Float" x="99" y="0" width="60" height="12" uuid="3bf4978f-2a9a-45c9-b1ab-31adeb9838f3"/>
 						<textElement textAlignment="Right">
 							<font isBold="false"/>
 						</textElement>
