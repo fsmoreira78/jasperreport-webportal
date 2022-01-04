@@ -373,7 +373,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 					<textFieldExpression><![CDATA[$P{p_nome_inquilino}]]></textFieldExpression>
 				</textField>
 				<textField pattern="">
-					<reportElement style="Title2" x="3" y="35" width="348" height="15" forecolor="#1E1E1E" uuid="42887ee1-8bfc-4fe3-9b59-a605ff2c255c">
+					<reportElement style="Title2" x="3" y="35" width="365" height="15" forecolor="#1E1E1E" uuid="42887ee1-8bfc-4fe3-9b59-a605ff2c255c">
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle" markup="html">
