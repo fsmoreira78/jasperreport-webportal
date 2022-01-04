@@ -303,7 +303,7 @@ order by t.num_automacao, mtl.dta_leitura]]>
 					<reportElement style="Title2" x="3" y="35" width="348" height="15" forecolor="#1E1E1E" uuid="11b17562-dc0e-46ab-aeb4-0d080f47e3c0">
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
-					<textElement verticalAlignment="Middle">
+					<textElement verticalAlignment="Middle" markup="html">
 						<font size="10" isItalic="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Empresa: " + $P{p_nome_empresa}]]></textFieldExpression>
