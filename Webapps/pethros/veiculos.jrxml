@@ -79,7 +79,7 @@ where v.cod_inquilino =  $P{p_inquilino}
 						<textElement textAlignment="Center" verticalAlignment="Middle">
 							<font isBold="false" isItalic="true"/>
 						</textElement>
-						<textFieldExpression><![CDATA["Proprietários: " + $F{NOM_PROPRIETARIO}]]></textFieldExpression>
+						<textFieldExpression><![CDATA["Proprietário: " + $F{NOM_PROPRIETARIO}]]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -113,7 +113,14 @@ where v.cod_inquilino =  $P{p_inquilino}
 		<groupHeader>
 			<band height="24">
 				<frame>
-					<reportElement key="" mode="Opaque" x="0" y="0" width="554" height="24" forecolor="#C8C8C8" backcolor="#C8C8C8" uuid="37294c7e-018c-4350-ae68-6f86fcbdf134"/>
+					<reportElement key="" mode="Transparent" x="0" y="0" width="554" height="24" forecolor="#C8C8C8" backcolor="#C8C8C8" uuid="37294c7e-018c-4350-ae68-6f86fcbdf134"/>
+					<box>
+						<pen lineColor="#1E1E1E"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+					</box>
 					<staticText>
 						<reportElement style="Column header" x="1" y="0" width="69" height="12" forecolor="#000000" uuid="d624091d-072f-42cb-a0bf-d15e34abe3eb">
 							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -377,31 +384,31 @@ where v.cod_inquilino =  $P{p_inquilino}
 					<reportElement style="Detail" positionType="Float" x="202" y="0" width="50" height="12" uuid="566d456d-5a4c-4200-aded-45dcf862f8e2">
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
-					<textElement textAlignment="Center"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{FLG_ABASTECE}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="">
 					<reportElement style="Detail" positionType="Float" x="1" y="0" width="69" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b"/>
-					<textElement textAlignment="Right"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{NUM_VEICULO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="">
 					<reportElement style="Detail" positionType="Float" x="261" y="0" width="79" height="12" uuid="7dbbc041-7a09-4602-b474-bc2e951975ac"/>
-					<textElement textAlignment="Left"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{FLG_MARCADOR}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="">
 					<reportElement style="Detail" positionType="Float" x="143" y="0" width="50" height="12" uuid="63508e4d-192c-45bf-b009-d1c9919d916c">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					</reportElement>
-					<textElement textAlignment="Center"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{FLG_ATIVO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="84" y="0" width="50" height="12" uuid="c61e99a1-f745-4bcb-9424-22b5a1676634">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					</reportElement>
-					<textElement textAlignment="Left"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{NUM_PLACA}]]></textFieldExpression>
 				</textField>
 			</frame>
@@ -414,7 +421,7 @@ where v.cod_inquilino =  $P{p_inquilino}
 		<band height="10" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<frame>
-				<reportElement mode="Transparent" x="-10" y="0" width="564" height="10" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0">
+				<reportElement mode="Transparent" x="0" y="0" width="554" height="10" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -425,7 +432,7 @@ where v.cod_inquilino =  $P{p_inquilino}
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
 				</box>
 				<staticText>
-					<reportElement style="Footer" x="201" y="0" width="173" height="10" uuid="9ffa10b5-a64a-47cc-9258-e57820e4e061">
+					<reportElement style="Footer" x="191" y="0" width="173" height="10" uuid="9ffa10b5-a64a-47cc-9258-e57820e4e061">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center">
