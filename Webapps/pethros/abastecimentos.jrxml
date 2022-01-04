@@ -576,6 +576,10 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				</reportElement>
 				<box>
 					<pen lineColor="#1E1E1E"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
 				</box>
 				<staticText>
 					<reportElement style="Footer" x="315" y="0" width="173" height="10" uuid="9ffa10b5-a64a-47cc-9258-e57820e4e061">
