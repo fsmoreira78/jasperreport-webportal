@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2017-10-31T11:55:15 -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modelos_produtos" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="64845262-b806-4b32-bc69-783be6e34e35">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -21,7 +20,7 @@
 from tb_mdlo_produto mp
 join tb_produto p on (p.cod_inquilino = mp.cod_inquilino and p.cod_produto = mp.cod_produto)
 where mp.cod_inquilino =  $P{p_cod_inquilino} 
-  and mp.cod_modelo =  $P{p_cod_modelo} ]]>
+  and mp.cod_modelo =  $P{p_cod_modelo}]]>
 	</queryString>
 	<field name="DSC_PRODUTO" class="java.lang.String"/>
 	<field name="FLG_ATIVO" class="java.lang.String"/>
@@ -32,9 +31,11 @@ where mp.cod_inquilino =  $P{p_cod_inquilino}
 		<band height="12" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField>
-				<reportElement style="Detail" x="0" y="0" width="180" height="12" uuid="8c67f1ad-f35e-4625-acc6-0e3a91db0014">
+				<reportElement style="Detail" x="0" y="0" width="136" height="12" uuid="8c67f1ad-f35e-4625-acc6-0e3a91db0014">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{DSC_PRODUTO}]]></textFieldExpression>
 			</textField>
 		</band>
