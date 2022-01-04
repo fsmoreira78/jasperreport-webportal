@@ -57,9 +57,10 @@ where cod_inquilino =  $P{p_inquilino}
 				</reportElement>
 			</frame>
 			<staticText>
-				<reportElement key="" style="Column header" x="219" y="55" width="50" height="12" forecolor="#FFFFFF" uuid="ec4a6a17-8167-45f3-b7bb-bbaaeaea90d5">
+				<reportElement key="" style="Column header" x="1" y="55" width="50" height="12" forecolor="#FFFFFF" uuid="ec4a6a17-8167-45f3-b7bb-bbaaeaea90d5">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
 					<font isBold="false"/>
@@ -67,14 +68,14 @@ where cod_inquilino =  $P{p_inquilino}
 				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="" style="Column header" x="1" y="55" width="168" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d"/>
+				<reportElement key="" style="Column header" x="55" y="55" width="168" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d"/>
 				<textElement textAlignment="Left">
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Descrição]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="" style="Column header" x="169" y="55" width="50" height="12" forecolor="#FFFFFF" uuid="139bdfa7-9e38-4468-b0b5-c59c50116335">
+				<reportElement key="" style="Column header" x="227" y="55" width="50" height="12" forecolor="#FFFFFF" uuid="139bdfa7-9e38-4468-b0b5-c59c50116335">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -184,20 +185,23 @@ where cod_inquilino =  $P{p_inquilino}
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textField textAdjust="StretchHeight" pattern="">
-					<reportElement style="Detail" positionType="Float" x="1" y="0" width="168" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b"/>
+					<reportElement style="Detail" positionType="Float" x="55" y="0" width="168" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{DSC_OPERACAO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="">
-					<reportElement style="Detail" positionType="Float" x="169" y="0" width="50" height="12" uuid="63508e4d-192c-45bf-b009-d1c9919d916c">
+					<reportElement style="Detail" positionType="Float" x="227" y="0" width="50" height="12" uuid="63508e4d-192c-45bf-b009-d1c9919d916c">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{FLG_ATIVO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="">
-					<reportElement style="Detail" positionType="Float" x="219" y="0" width="50" height="12" uuid="7d919cb0-50d4-4ad5-a2de-692c67dc78d2">
+					<reportElement style="Detail" positionType="Float" x="1" y="0" width="50" height="12" uuid="7d919cb0-50d4-4ad5-a2de-692c67dc78d2">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{NUM_OPERACAO}]]></textFieldExpression>
