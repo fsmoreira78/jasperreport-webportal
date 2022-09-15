@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="desempenho_fazenda" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b000a56-ca87-403e-95d4-cde934345cca">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NO_DATA_ADAPTER"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Title" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="16" isBold="true"/>
+	<style name="Title2" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
+	<style name="SubTitle" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="10" isBold="false"/>
+	<style name="Column header" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Arial" fontSize="8" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Arial" fontSize="8"/>
+	<style name="Row" mode="Transparent" fontName="Arial" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#DCDCDC"/>
+		</conditionalStyle>
+	</style>
+	<style name="Footer" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
 	<parameter name="p_nome_inquilino" class="java.lang.String"/>
 	<parameter name="p_inquilino" class="java.lang.String"/>
 	<parameter name="p_fazenda" class="java.lang.String"/>
