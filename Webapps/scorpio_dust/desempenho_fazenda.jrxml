@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="desempenho_fazenda" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b000a56-ca87-403e-95d4-cde934345cca">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NO_DATA_ADAPTER"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="Title" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="Title2" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
 	<style name="SubTitle" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="10" isBold="false"/>
-	<style name="Column header" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Arial" fontSize="8" isBold="true"/>
+	<style name="Column header" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Arial" fontSize="8" isBold="false"/>
 	<style name="Detail" mode="Transparent" fontName="Arial" fontSize="8"/>
 	<style name="Row" mode="Transparent" fontName="Arial" pdfFontName="Times-Roman">
 		<conditionalStyle>
@@ -63,7 +63,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<staticText>
-					<reportElement mode="Transparent" x="3" y="0" width="348" height="18" forecolor="#1E1E1E" backcolor="#FFFFFF" uuid="a5263994-c1c9-4e78-888e-e798da150336">
+					<reportElement style="Title" mode="Transparent" x="3" y="0" width="348" height="18" forecolor="#1E1E1E" backcolor="#FFFFFF" uuid="a5263994-c1c9-4e78-888e-e798da150336">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
@@ -146,10 +146,10 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="25" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="1" width="554" height="20" backcolor="#C8C8C8" uuid="1edef5b2-a25a-4982-ba5e-7c4757c8cbfd">
+				<reportElement mode="Opaque" x="0" y="1" width="554" height="29" backcolor="#C8C8C8" uuid="1edef5b2-a25a-4982-ba5e-7c4757c8cbfd">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -165,13 +165,39 @@
 					<reportElement x="1" y="1" width="552" height="12" uuid="60ba7e80-f4d6-4f9f-aab7-c9363cff6132">
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center">
 						<font fontName="Arial" isItalic="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Fazenda: " + $F{NUM_FAZENDA} + " - " + $F{DSC_FAZENDA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="0" y="13" width="30" height="16" uuid="1b26a5cc-c114-4748-a09f-aab3d09f2e53"/>
+					<text><![CDATA[Safra]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Column header" x="30" y="13" width="50" height="16" uuid="67dd7d15-14d3-49d8-9048-7edf670fdedf"/>
+					<textFieldExpression><![CDATA[$P{p_safra}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="90" y="13" width="30" height="16" uuid="09d5d987-83ad-4ca5-a114-4b5bb113fef6"/>
+					<text><![CDATA[Versão]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Column header" x="120" y="13" width="50" height="16" uuid="51876478-78b9-40eb-b77a-1ce1a6044972"/>
+					<textFieldExpression><![CDATA[$P{p_versao}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="379" y="13" width="50" height="16" uuid="977f747c-8726-4194-917b-c5cb2b7c113e"/>
+					<text><![CDATA[Área Total]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement style="Column header" x="430" y="13" width="122" height="16" uuid="90afdd7f-ccc6-4acc-9e8c-f081797e7f84">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{NUM_AREA_TOTAL} + " ha"]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
@@ -196,7 +222,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
 				</box>
 				<staticText>
-					<reportElement x="191" y="0" width="173" height="10" uuid="740e685c-ca55-41d8-bf97-de8e4bb1d689">
+					<reportElement style="Footer" x="191" y="0" width="173" height="10" uuid="740e685c-ca55-41d8-bf97-de8e4bb1d689">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center">
