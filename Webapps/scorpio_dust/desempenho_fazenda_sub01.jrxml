@@ -54,10 +54,27 @@ order by dafq.num_quadra]]>
 		<band height="20">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement style="Title3" x="0" y="0" width="100" height="20" uuid="99700d0e-cf7c-4ef7-872e-a7351025790f">
+				<reportElement style="Title3" x="0" y="0" width="70" height="20" uuid="99700d0e-cf7c-4ef7-872e-a7351025790f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<text><![CDATA[QUADRA]]></text>
+				<text><![CDATA[Quadra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title3" x="70" y="0" width="70" height="20" uuid="a4d5103a-51d4-44da-ba58-df7ae6c7828d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Área]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title3" x="140" y="0" width="70" height="20" uuid="2261a3fd-d622-4486-848c-468192b4f402">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Pontos/Ha]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -65,10 +82,27 @@ order by dafq.num_quadra]]>
 		<band height="20" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement style="Title3" x="0" y="0" width="100" height="20" uuid="d8752c5e-4f86-4115-9190-89b00fc74017">
+				<reportElement style="Title3" x="0" y="0" width="70" height="20" uuid="d8752c5e-4f86-4115-9190-89b00fc74017">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{NUM_QUADRA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Title3" x="70" y="0" width="70" height="20" uuid="ca8fa281-4e3d-4339-8131-6efe1dcf55c0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{NUM_AREA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Title3" x="140" y="0" width="70" height="20" uuid="a9e22159-082a-486f-8097-a8e65ece7b31">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{QTD_PONTO_HA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
