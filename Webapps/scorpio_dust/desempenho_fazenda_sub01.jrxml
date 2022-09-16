@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="desempenho_fazenda_sub01" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9b3c810b-72c7-4c2d-929c-3678e150b01d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NO_DATA_ADAPTER"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Title" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="16" isBold="true"/>
+	<style name="Title2" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
+	<style name="Title3" forecolor="#000000" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
+	<style name="SubTitle" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="10" isBold="false"/>
+	<style name="Column header" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Arial" fontSize="8" isBold="false"/>
+	<style name="Detail" mode="Transparent" fontName="Arial" fontSize="8"/>
+	<style name="Row" mode="Transparent" fontName="Arial" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#DCDCDC"/>
+		</conditionalStyle>
+	</style>
+	<style name="Footer" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
+	<parameter name="p_cod_inquilino" class="java.lang.String"/>
+	<parameter name="p_cod_fazenda" class="java.lang.String"/>
+	<parameter name="p_cod_safra" class="java.lang.String"/>
+	<parameter name="p_num_versao" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select dafq.cod_inquilino, dafq.cod_fazenda, dafq.num_fazenda, dafq.dsc_fazenda, 
+       dafq.num_quadra, dafq.num_area, dl.qtd_ponto_ha,
+       sum(dl.tot_ponto) tot_ponto_valido, sum(dl.tot_ponto_sensor) tot_ponto_sensor,
+       ((sum(dl.tot_ponto) + sum(dl.tot_ponto_sensor)) / dl.qtd_ponto_ha) * 100 pct_completo,
+       case 
+         when (sum(dl.tot_ponto) + sum(dl.tot_ponto_sensor)) > dl.qtd_ponto_ha then 'VÁRIAS PASSADAS'
+         else 'NORMAL' 
+       end dsc_percentual
+from vw_dust_area_fazenda_quadra dafq 
+join vwm_dust_frequencia_fazenda_quadra dl on (dl.seq_georeferencia = dafq.seq_georeferencia)
+where dafq.cod_inquilino = $P{p_cod_inquilino} 
+  and dafq.cod_fazenda = $P{p_cod_fazenda} 
+  and dafq.cod_safra = $P{p_cod_safra} 
+  and dafq.num_versao = $P{p_num_versao} 
+group by dafq.cod_inquilino, dafq.cod_fazenda, dafq.num_fazenda, dafq.dsc_fazenda, dafq.num_quadra, dafq.num_area, dl.qtd_ponto_ha  
+order by dafq.num_quadra]]>
+	</queryString>
+	<field name="COD_INQUILINO" class="java.lang.Long"/>
+	<field name="COD_FAZENDA" class="java.lang.Long"/>
+	<field name="NUM_FAZENDA" class="java.lang.String"/>
+	<field name="DSC_FAZENDA" class="java.lang.String"/>
+	<field name="NUM_QUADRA" class="java.lang.String"/>
+	<field name="NUM_AREA" class="java.lang.Float"/>
+	<field name="QTD_PONTO_HA" class="java.lang.Long"/>
+	<background>
+		<band>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement style="Title3" x="0" y="0" width="100" height="20" uuid="99700d0e-cf7c-4ef7-872e-a7351025790f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[QUADRA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement style="Title3" x="0" y="0" width="100" height="20" uuid="d8752c5e-4f86-4115-9190-89b00fc74017">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{NUM_QUADRA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
