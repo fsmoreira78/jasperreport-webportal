@@ -216,7 +216,7 @@
 				</textField>
 			</frame>
 			<subreport>
-				<reportElement x="20" y="43" width="529" height="20" uuid="a9670ef9-cecc-47de-b183-f511a1913524">
+				<reportElement x="1" y="43" width="551" height="20" uuid="a9670ef9-cecc-47de-b183-f511a1913524">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<subreportParameter name="p_cod_inquilino">
