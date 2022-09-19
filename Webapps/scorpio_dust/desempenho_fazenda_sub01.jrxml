@@ -102,10 +102,10 @@ order by dffq.num_quadra]]>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
-				<text><![CDATA[Observações]]></text>
+				<text><![CDATA[Eficiência]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="17" width="550" height="1" forecolor="#5C5B5B" uuid="8f6ff61d-07be-4c0d-bb79-89488fec6d96">
+				<reportElement x="0" y="17" width="800" height="1" forecolor="#5C5B5B" uuid="8f6ff61d-07be-4c0d-bb79-89488fec6d96">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -147,6 +147,26 @@ order by dffq.num_quadra]]>
 					<reportElement style="Detail2" x="219" y="0" width="71" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{TOT_PONTO}).doubleValue() / $F{QTD_PONTO_HA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00%">
+					<reportElement x="300" y="0" width="60" height="15" uuid="eb4f4029-dd06-4490-9e03-5cc9cc107757"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_0}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00%">
+					<reportElement x="370" y="0" width="60" height="15" uuid="ff5bc236-8094-45c7-a241-fc85bdcb9f74"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_1}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00%">
+					<reportElement x="440" y="0" width="60" height="15" uuid="4b1a646e-748a-4023-aa16-985545650aac"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_2}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00%">
+					<reportElement x="510" y="0" width="60" height="15" uuid="9e130751-449f-4739-958d-18892abd46a7"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_3}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
