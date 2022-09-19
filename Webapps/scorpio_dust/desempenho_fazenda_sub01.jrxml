@@ -33,6 +33,18 @@
 	<parameter name="p_cod_safra" class="java.lang.String"/>
 	<parameter name="p_num_versao" class="java.lang.String"/>
 	<parameter name="p_cod_operacao" class="java.lang.String"/>
+	<parameter name="p_dsc_faixa_0" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Prof < 30"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_dsc_faixa_1" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Prof < 40"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_dsc_faixa_2" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Prof < 60"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_dsc_faixa_3" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Prof > 60"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select cod_inquilino, cod_fazenda, num_fazenda, dsc_fazenda, 
        num_quadra, num_area, qtd_ponto_ha, 
@@ -68,7 +80,7 @@ order by dffq.num_quadra]]>
 		<band height="20">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement style="Title3" x="0" y="0" width="50" height="15" uuid="99700d0e-cf7c-4ef7-872e-a7351025790f">
+				<reportElement style="Title3" x="50" y="0" width="50" height="15" uuid="99700d0e-cf7c-4ef7-872e-a7351025790f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -76,7 +88,7 @@ order by dffq.num_quadra]]>
 				<text><![CDATA[Quadra]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Title3" x="60" y="0" width="50" height="15" uuid="a4d5103a-51d4-44da-ba58-df7ae6c7828d">
+				<reportElement style="Title3" x="730" y="0" width="70" height="15" uuid="a4d5103a-51d4-44da-ba58-df7ae6c7828d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -84,25 +96,18 @@ order by dffq.num_quadra]]>
 				<text><![CDATA[Área ha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Title3" x="120" y="0" width="90" height="15" uuid="aab2d135-aff0-4413-8078-d24a39c6e713">
+				<reportElement style="Title3" x="180" y="0" width="90" height="15" uuid="aab2d135-aff0-4413-8078-d24a39c6e713">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Pontos Válidos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Title3" x="220" y="0" width="70" height="15" uuid="092d3c86-cd84-49b6-bacc-931cf0d1fb2b">
+				<reportElement style="Title3" x="300" y="0" width="70" height="15" uuid="092d3c86-cd84-49b6-bacc-931cf0d1fb2b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[% Completo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Title3" x="300" y="0" width="90" height="15" uuid="d5c5a9a1-8831-40d5-a652-9de19e6c9e15">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left"/>
-				<text><![CDATA[Eficiência]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="17" width="800" height="1" forecolor="#5C5B5B" uuid="8f6ff61d-07be-4c0d-bb79-89488fec6d96">
@@ -112,6 +117,22 @@ order by dffq.num_quadra]]>
 					<pen lineColor="#808080"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement x="410" y="0" width="70" height="15" uuid="6eeee693-c140-48c7-be59-5a4221784f56"/>
+				<textFieldExpression><![CDATA[$P{p_dsc_faixa_0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="0" width="70" height="15" uuid="54ee8433-8ee9-49a4-aa7b-393b3a3b88f4"/>
+				<textFieldExpression><![CDATA[$P{p_dsc_faixa_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="570" y="0" width="70" height="15" uuid="7ffcac0c-9285-4065-a1aa-eebe42dd558b"/>
+				<textFieldExpression><![CDATA[$P{p_dsc_faixa_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="650" y="0" width="70" height="15" uuid="6d4ac9b7-9f03-4aa8-b843-be1403140786"/>
+				<textFieldExpression><![CDATA[$P{p_dsc_faixa_3}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -123,48 +144,48 @@ order by dffq.num_quadra]]>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textField>
-					<reportElement style="Detail2" x="0" y="0" width="50" height="15" uuid="d8752c5e-4f86-4115-9190-89b00fc74017">
+					<reportElement style="Detail2" x="50" y="0" width="50" height="15" uuid="d8752c5e-4f86-4115-9190-89b00fc74017">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{NUM_QUADRA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00">
-					<reportElement style="Detail2" x="60" y="0" width="50" height="15" uuid="ca8fa281-4e3d-4339-8131-6efe1dcf55c0">
+					<reportElement style="Detail2" x="730" y="0" width="70" height="15" uuid="ca8fa281-4e3d-4339-8131-6efe1dcf55c0">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{NUM_AREA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0">
-					<reportElement style="Detail2" x="120" y="0" width="90" height="15" uuid="cbf42638-30f3-46c0-a715-a4e0c1f6594f">
+					<reportElement style="Detail2" x="180" y="0" width="90" height="15" uuid="cbf42638-30f3-46c0-a715-a4e0c1f6594f">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement style="Detail2" x="219" y="0" width="71" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
+					<reportElement style="Detail2" x="300" y="0" width="70" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{TOT_PONTO}).doubleValue() / $F{QTD_PONTO_HA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="300" y="0" width="60" height="15" uuid="eb4f4029-dd06-4490-9e03-5cc9cc107757"/>
+					<reportElement x="410" y="0" width="70" height="15" uuid="eb4f4029-dd06-4490-9e03-5cc9cc107757"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_0}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="370" y="0" width="60" height="15" uuid="ff5bc236-8094-45c7-a241-fc85bdcb9f74"/>
+					<reportElement x="490" y="0" width="70" height="15" uuid="ff5bc236-8094-45c7-a241-fc85bdcb9f74"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_1}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="440" y="0" width="60" height="15" uuid="4b1a646e-748a-4023-aa16-985545650aac"/>
+					<reportElement x="570" y="0" width="70" height="15" uuid="4b1a646e-748a-4023-aa16-985545650aac"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_2}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="510" y="0" width="60" height="15" uuid="9e130751-449f-4739-958d-18892abd46a7"/>
+					<reportElement x="650" y="0" width="70" height="15" uuid="9e130751-449f-4739-958d-18892abd46a7"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_3}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
