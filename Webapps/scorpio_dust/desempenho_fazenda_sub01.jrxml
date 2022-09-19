@@ -18,6 +18,7 @@
 	<style name="SubTitle" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="10" isBold="false"/>
 	<style name="Column header" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Arial" fontSize="8" isBold="false"/>
 	<style name="Detail" mode="Transparent" fontName="Arial" fontSize="8"/>
+	<style name="Detail2" mode="Transparent" vTextAlign="Middle" fontName="Arial" fontSize="10"/>
 	<style name="Row" mode="Transparent" fontName="Arial" pdfFontName="Times-Roman">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
@@ -120,31 +121,28 @@ order by dffq.num_quadra]]>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textField>
-					<reportElement style="Title3" x="0" y="0" width="50" height="15" uuid="d8752c5e-4f86-4115-9190-89b00fc74017">
+					<reportElement style="Detail2" x="0" y="0" width="50" height="15" uuid="d8752c5e-4f86-4115-9190-89b00fc74017">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{NUM_QUADRA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00">
-					<reportElement style="Title3" x="60" y="0" width="50" height="15" uuid="ca8fa281-4e3d-4339-8131-6efe1dcf55c0">
+					<reportElement style="Detail2" x="60" y="0" width="50" height="15" uuid="ca8fa281-4e3d-4339-8131-6efe1dcf55c0">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{NUM_AREA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0">
-					<reportElement style="Title3" x="120" y="0" width="90" height="15" uuid="cbf42638-30f3-46c0-a715-a4e0c1f6594f">
+					<reportElement style="Detail2" x="120" y="0" width="90" height="15" uuid="cbf42638-30f3-46c0-a715-a4e0c1f6594f">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Title3" x="220" y="0" width="70" height="15" uuid="8ad47f04-923a-4efc-87e8-4a50c4020b4d">
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Right"/>
+					<reportElement style="Detail2" x="219" y="0" width="71" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
 					<textFieldExpression><![CDATA[($F{TOT_PONTO} / $F{QTD_PONTO_HA}) * 100]]></textFieldExpression>
 				</textField>
 			</frame>
