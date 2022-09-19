@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="desempenho_fazenda_sub03" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="129d4fe0-a39e-4498-8011-a03ffb9d0f06">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="p_cod_inquilino" class="java.lang.String"/>
+	<parameter name="p_cod_fazenda" class="java.lang.String"/>
+	<parameter name="p_cod_operacao" class="java.lang.String"/>
+	<parameter name="p_cod_safra" class="java.lang.String"/>
+	<parameter name="p_num_versao" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select sum(tot_ponto) tot_ponto, sum(tot_ponto_sensor) tot_ponto_sensor
+ from vwm_dust_frequencia_fazenda
+where cod_inquilino = $P{p_cod_inquilino}
+    and cod_fazenda = $P{p_cod_fazenda}
+    and cod_operacao = $P{p_cod_operacao}
+    and cod_safra = $P{p_cod_safra}
+    and num_versao = $P{p_num_versao}]]>
+	</queryString>
+	<field name="TOT_PONTO" class="java.lang.Integer"/>
+	<field name="TOT_PONTO_SENSOR" class="java.lang.Integer"/>
+	<summary>
+		<band height="200" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="10" y="10" width="331" height="180" uuid="2f2b651f-ed62-4fbe-8871-5ba3a97c3103"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA["Falhas do Sensor"]]></keyExpression>
+					<valueExpression><![CDATA[$F{TOT_PONTO}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -180,22 +180,22 @@ order by dffq.num_quadra]]>
 					<textFieldExpression><![CDATA[new Double($F{TOT_PONTO}).doubleValue() / $F{QTD_PONTO_HA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="410" y="0" width="70" height="15" uuid="eb4f4029-dd06-4490-9e03-5cc9cc107757"/>
+					<reportElement style="Detail2" x="410" y="0" width="70" height="15" backcolor="#FFFFFF" uuid="eb4f4029-dd06-4490-9e03-5cc9cc107757"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_0}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="490" y="0" width="70" height="15" uuid="ff5bc236-8094-45c7-a241-fc85bdcb9f74"/>
+					<reportElement style="Detail2" x="490" y="0" width="70" height="15" uuid="ff5bc236-8094-45c7-a241-fc85bdcb9f74"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_1}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="570" y="0" width="70" height="15" uuid="4b1a646e-748a-4023-aa16-985545650aac"/>
+					<reportElement style="Detail2" x="570" y="0" width="70" height="15" uuid="4b1a646e-748a-4023-aa16-985545650aac"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_2}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
-					<reportElement x="650" y="0" width="70" height="15" uuid="9e130751-449f-4739-958d-18892abd46a7"/>
+					<reportElement style="Detail2" x="650" y="0" width="70" height="15" uuid="9e130751-449f-4739-958d-18892abd46a7"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[new Double($F{QTD_FAIXA_3}).doubleValue() / $F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
