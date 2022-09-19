@@ -145,7 +145,7 @@ order by dffq.num_quadra]]>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[($F{TOT_PONTO} / $F{QTD_PONTO_HA}) / 100]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($F{TOT_PONTO} / $F{QTD_PONTO_HA}) * 100]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
