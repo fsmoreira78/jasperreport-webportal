@@ -140,12 +140,12 @@ order by dffq.num_quadra]]>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0">
+				<textField pattern="#,##0.00">
 					<reportElement style="Title3" x="220" y="0" width="70" height="15" uuid="8ad47f04-923a-4efc-87e8-4a50c4020b4d">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[Math.round(($F{TOT_PONTO} / $F{QTD_PONTO_HA}) * 10000) / 100]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($F{TOT_PONTO} / $F{QTD_PONTO_HA}) / 100]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
