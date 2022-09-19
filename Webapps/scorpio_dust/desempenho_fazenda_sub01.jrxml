@@ -12,6 +12,8 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="285"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="706"/>
 	<style name="Title" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="Title2" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
 	<style name="Title3" forecolor="#000000" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
@@ -144,7 +146,7 @@ order by dffq.num_quadra]]>
 				<textField pattern="#,##0.00%">
 					<reportElement style="Detail2" x="219" y="0" width="71" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[($F{TOT_PONTO} / $F{QTD_PONTO_HA})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new Double($F{TOT_PONTO}).doubleValue() / $F{QTD_PONTO_HA}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
