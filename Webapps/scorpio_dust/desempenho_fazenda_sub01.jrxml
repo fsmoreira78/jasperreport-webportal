@@ -141,10 +141,10 @@ order by dffq.num_quadra]]>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{TOT_PONTO}]]></textFieldExpression>
 				</textField>
-				<textField>
+				<textField pattern="#,##0.00%">
 					<reportElement style="Detail2" x="219" y="0" width="71" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[(($F{TOT_PONTO} / $F{QTD_PONTO_HA}) * 100)]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{TOT_PONTO}.divide($F{QTD_PONTO_HA}).multiply(100)]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
