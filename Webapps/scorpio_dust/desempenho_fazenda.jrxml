@@ -273,8 +273,30 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch">
+		<band height="210" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<subreport>
+				<reportElement x="0" y="5" width="800" height="200" uuid="7fb1d4aa-4150-4750-9d98-8948648ea8ea">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<subreportParameter name="p_cod_inquilino">
+					<subreportParameterExpression><![CDATA[$P{p_inquilino}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_cod_fazenda">
+					<subreportParameterExpression><![CDATA[$P{p_fazenda}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_cod_operacao">
+					<subreportParameterExpression><![CDATA[$P{p_operacao}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_cod_safra">
+					<subreportParameterExpression><![CDATA[$P{p_safra}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_num_versao">
+					<subreportParameterExpression><![CDATA[$P{p_versao}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["desempenho_fazenda_sub02.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</columnFooter>
 	<pageFooter>
@@ -304,29 +326,4 @@
 			</frame>
 		</band>
 	</pageFooter>
-	<summary>
-		<band height="300" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<subreport>
-				<reportElement x="0" y="18" width="800" height="210" uuid="7fb1d4aa-4150-4750-9d98-8948648ea8ea"/>
-				<subreportParameter name="p_cod_inquilino">
-					<subreportParameterExpression><![CDATA[$P{p_inquilino}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="p_cod_fazenda">
-					<subreportParameterExpression><![CDATA[$P{p_fazenda}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="p_cod_operacao">
-					<subreportParameterExpression><![CDATA[$P{p_operacao}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="p_cod_safra">
-					<subreportParameterExpression><![CDATA[$P{p_safra}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="p_num_versao">
-					<subreportParameterExpression><![CDATA[$P{p_versao}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["desempenho_fazenda_sub02.jasper"]]></subreportExpression>
-			</subreport>
-		</band>
-	</summary>
 </jasperReport>

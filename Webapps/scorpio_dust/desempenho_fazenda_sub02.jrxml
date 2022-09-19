@@ -29,11 +29,11 @@ order by num_prof]]>
 	<field name="NUM_PROF" class="java.lang.Integer"/>
 	<field name="TOT_PONTO" class="java.lang.Integer"/>
 	<summary>
-		<band height="300">
+		<band height="250">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<barChart>
 				<chart evaluationTime="Report">
-					<reportElement x="20" y="10" width="811" height="281" uuid="91a185a6-cb70-413f-b896-b0005b289266"/>
+					<reportElement x="10" y="10" width="821" height="230" uuid="d42876b8-23dc-4822-a3c1-12f301d3d5a1"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -41,7 +41,7 @@ order by num_prof]]>
 				<categoryDataset>
 					<dataset resetType="Report"/>
 					<categorySeries>
-						<seriesExpression><![CDATA["SERIES 1"]]></seriesExpression>
+						<seriesExpression><![CDATA["Pontos por Profundidade"]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{NUM_PROF}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{TOT_PONTO}]]></valueExpression>
 					</categorySeries>
