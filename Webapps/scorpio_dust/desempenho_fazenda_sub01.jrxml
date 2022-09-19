@@ -74,7 +74,7 @@ order by dffq.num_quadra]]>
 	<variable name="SOMAR_AREA_QUADRA" class="java.lang.Float" calculation="Sum">
 		<variableExpression><![CDATA[$F{NUM_AREA}]]></variableExpression>
 	</variable>
-	<variable name="SOMAR_PONTOS" class="java.lang.String" calculation="Sum">
+	<variable name="SOMAR_PONTOS" class="java.lang.Long" calculation="Sum">
 		<variableExpression><![CDATA[$F{TOT_PONTO}]]></variableExpression>
 	</variable>
 	<background>
