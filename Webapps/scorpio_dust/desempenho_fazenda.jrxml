@@ -33,6 +33,10 @@
 	<parameter name="p_operacao" class="java.lang.String"/>
 	<parameter name="p_desc_operacao" class="java.lang.String"/>
 	<parameter name="p_ponto_ha" class="java.lang.String"/>
+	<parameter name="p_faixa_0" class="java.lang.String"/>
+	<parameter name="p_faixa_1" class="java.lang.String"/>
+	<parameter name="p_faixa_2" class="java.lang.String"/>
+	<parameter name="p_faixa_3" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select cod_inquilino,  cod_fazenda, num_fazenda,
       dsc_fazenda, cod_safra, num_versao, 
@@ -256,6 +260,12 @@
 				</subreportParameter>
 				<subreportParameter name="p_cod_operacao">
 					<subreportParameterExpression><![CDATA[$P{p_operacao}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_dsc_faixa_0">
+					<subreportParameterExpression><![CDATA[$P{p_faixa_0}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_dsc_faixa_1">
+					<subreportParameterExpression><![CDATA[$P{p_faixa_1}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["desempenho_fazenda_sub01.jasper"]]></subreportExpression>

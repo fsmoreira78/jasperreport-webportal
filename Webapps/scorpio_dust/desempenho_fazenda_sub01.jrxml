@@ -118,19 +118,23 @@ order by dffq.num_quadra]]>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="410" y="0" width="70" height="15" uuid="6eeee693-c140-48c7-be59-5a4221784f56"/>
+				<reportElement style="Title3" x="410" y="0" width="70" height="15" uuid="6eeee693-c140-48c7-be59-5a4221784f56"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$P{p_dsc_faixa_0}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="490" y="0" width="70" height="15" uuid="54ee8433-8ee9-49a4-aa7b-393b3a3b88f4"/>
+				<reportElement style="Title3" x="490" y="0" width="70" height="15" uuid="54ee8433-8ee9-49a4-aa7b-393b3a3b88f4"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$P{p_dsc_faixa_1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="570" y="0" width="70" height="15" uuid="7ffcac0c-9285-4065-a1aa-eebe42dd558b"/>
+				<reportElement style="Title3" x="570" y="0" width="70" height="15" uuid="7ffcac0c-9285-4065-a1aa-eebe42dd558b"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$P{p_dsc_faixa_2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="650" y="0" width="70" height="15" uuid="6d4ac9b7-9f03-4aa8-b843-be1403140786"/>
+				<reportElement style="Title3" x="650" y="0" width="70" height="15" uuid="6d4ac9b7-9f03-4aa8-b843-be1403140786"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$P{p_dsc_faixa_3}]]></textFieldExpression>
 			</textField>
 		</band>
