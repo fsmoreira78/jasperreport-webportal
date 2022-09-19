@@ -71,6 +71,9 @@ order by dffq.num_quadra]]>
 	<field name="QTD_FAIXA_1" class="java.lang.Integer"/>
 	<field name="QTD_FAIXA_2" class="java.lang.Integer"/>
 	<field name="QTD_FAIXA_3" class="java.lang.Integer"/>
+	<variable name="SOMAR_AREA_QUADRA" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{NUM_AREA}]]></variableExpression>
+	</variable>
 	<background>
 		<band>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -120,7 +123,8 @@ order by dffq.num_quadra]]>
 			<textField>
 				<reportElement style="Title3" x="410" y="0" width="70" height="15" uuid="6eeee693-c140-48c7-be59-5a4221784f56"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$P{p_dsc_faixa_0}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{p_dsc_faixa_0}
+]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Title3" x="490" y="0" width="70" height="15" uuid="54ee8433-8ee9-49a4-aa7b-393b3a3b88f4"/>
@@ -140,7 +144,7 @@ order by dffq.num_quadra]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
+		<band height="15" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<frame>
 				<reportElement style="Row" x="0" y="0" width="800" height="15" uuid="e8f3250f-150e-4d40-a33c-6ba9beeac4b1">
@@ -196,4 +200,16 @@ order by dffq.num_quadra]]>
 			</frame>
 		</band>
 	</detail>
+	<summary>
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement style="Title3" x="730" y="2" width="70" height="15" uuid="cfe19010-5a89-47ea-91bd-874e9a4503f6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{SOMAR_AREA_QUADRA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
 </jasperReport>
