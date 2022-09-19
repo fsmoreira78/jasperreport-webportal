@@ -116,7 +116,7 @@ order by dffq.num_quadra]]>
 		<band height="20" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<frame>
-				<reportElement style="Row" x="0" y="0" width="550" height="15" uuid="e8f3250f-150e-4d40-a33c-6ba9beeac4b1">
+				<reportElement style="Row" x="0" y="0" width="800" height="15" uuid="e8f3250f-150e-4d40-a33c-6ba9beeac4b1">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -143,7 +143,8 @@ order by dffq.num_quadra]]>
 				</textField>
 				<textField>
 					<reportElement style="Detail2" x="219" y="0" width="71" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
-					<textFieldExpression><![CDATA[($F{TOT_PONTO} / $F{QTD_PONTO_HA}) * 100]]></textFieldExpression>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[(($F{TOT_PONTO} / $F{QTD_PONTO_HA}) * 100)]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
