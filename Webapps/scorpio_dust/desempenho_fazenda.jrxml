@@ -34,19 +34,16 @@
 	<parameter name="p_desc_operacao" class="java.lang.String"/>
 	<parameter name="p_ponto_ha" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select cod_inquilino,
-      cod_fazenda,
-      num_fazenda,
-      dsc_fazenda,
-      cod_safra, 
-      num_versao, 
+		<![CDATA[select cod_inquilino,  cod_fazenda, num_fazenda,
+      dsc_fazenda, cod_safra, num_versao, 
       sum(num_area) num_area_total
-   from vw_dust_area_fazenda_quadra
+   from tb_georeferencia 
   where cod_inquilino = $P{p_inquilino} 
-      and  cod_fazenda = $P{p_fazenda} 
+      and cod_fazenda = $P{p_fazenda} 
       and cod_safra = $P{p_safra} 
       and num_versao = $P{p_versao} 
-  group by cod_inquilino, cod_fazenda, num_fazenda, dsc_fazenda, cod_safra, num_versao]]>
+  group by cod_inquilino, cod_fazenda, num_fazenda,
+                   dsc_fazenda, cod_safra, num_versao]]>
 	</queryString>
 	<field name="COD_INQUILINO" class="java.lang.Long"/>
 	<field name="COD_FAZENDA" class="java.lang.Long"/>
