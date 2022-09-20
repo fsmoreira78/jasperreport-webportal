@@ -17,17 +17,17 @@
 	<parameter name="p_cod_safra" class="java.lang.String"/>
 	<parameter name="p_num_versao" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select dsc_sensor, sum(tot_ponto) tot_ponto, to_char(sum(tot_ponto))  dsc_tot_ponto
+		<![CDATA[select dsc_coletor, sum(tot_ponto) tot_ponto, to_char(sum(tot_ponto))  dsc_tot_ponto
  from vwm_dust_status_sensor_fazenda_safra
 where cod_inquilino = $P{p_cod_inquilino}
     and cod_fazenda = $P{p_cod_fazenda}
     and cod_operacao = $P{p_cod_operacao}
     and cod_safra = $P{p_cod_safra}
     and num_versao = $P{p_num_versao}
-group by dsc_sensor  
-order by dsc_sensor]]>
+group by dsc_coletor  
+order by dsc_coletor]]>
 	</queryString>
-	<field name="DSC_SENSOR" class="java.lang.String"/>
+	<field name="DSC_COLETOR" class="java.lang.String"/>
 	<field name="TOT_PONTO" class="java.lang.Integer"/>
 	<field name="DSC_TOT_PONTO" class="java.lang.String"/>
 	<summary>
@@ -35,13 +35,13 @@ order by dsc_sensor]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pieChart>
 				<chart evaluationTime="Report" theme="aegean">
-					<reportElement x="5" y="5" width="350" height="210" uuid="a5c43534-fd3c-4e86-9b31-0ba480e8597c">
+					<reportElement x="5" y="5" width="350" height="210" uuid="82b273a3-f1ad-407a-b6a3-758c919c9ff4">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<chartTitle>
 						<font fontName="Arial" size="8"/>
-						<titleExpression><![CDATA["Sensor"]]></titleExpression>
+						<titleExpression><![CDATA["Coletores"]]></titleExpression>
 					</chartTitle>
 					<chartSubtitle>
 						<font fontName="Arial" size="8"/>
@@ -52,15 +52,12 @@ order by dsc_sensor]]>
 				</chart>
 				<pieDataset>
 					<dataset resetType="Report"/>
-					<keyExpression><![CDATA[$F{DSC_SENSOR}]]></keyExpression>
+					<keyExpression><![CDATA[$F{DSC_COLETOR}]]></keyExpression>
 					<valueExpression><![CDATA[$F{TOT_PONTO}]]></valueExpression>
 					<labelExpression><![CDATA[$F{DSC_TOT_PONTO}]]></labelExpression>
 				</pieDataset>
 				<piePlot>
-					<plot>
-						<seriesColor seriesOrder="0" color="#48E97E"/>
-						<seriesColor seriesOrder="1" color="#F93A00"/>
-					</plot>
+					<plot/>
 					<itemLabel/>
 				</piePlot>
 			</pieChart>
