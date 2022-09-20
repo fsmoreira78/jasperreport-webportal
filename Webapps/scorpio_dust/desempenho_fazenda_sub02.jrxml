@@ -23,7 +23,7 @@ order by num_prof]]>
 		<band height="200">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<barChart>
-				<chart evaluationTime="Report" theme="aegean">
+				<chart isShowLegend="false" evaluationTime="Report" theme="aegean">
 					<reportElement x="10" y="10" width="790" height="180" uuid="dbec8acc-c5b5-4e6e-a20e-917e0cdac99c">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -43,15 +43,15 @@ order by num_prof]]>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>
-					<plot>
+					<plot labelRotation="90.0">
 						<seriesColor seriesOrder="0" color="#F93A00"/>
 						<seriesColor seriesOrder="1" color="#EBF700"/>
 						<seriesColor seriesOrder="2" color="#48E97E"/>
 						<seriesColor seriesOrder="3" color="#008C1C"/>
 					</plot>
 					<itemLabel/>
-					<categoryAxisFormat>
-						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000">
+					<categoryAxisFormat labelRotation="90.0">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="" axisLineColor="#000000">
 							<labelFont>
 								<font fontName="Arial" size="8"/>
 							</labelFont>
