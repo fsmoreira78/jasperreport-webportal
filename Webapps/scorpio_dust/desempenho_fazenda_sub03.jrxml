@@ -24,7 +24,8 @@ where cod_inquilino = $P{p_cod_inquilino}
     and cod_operacao = $P{p_cod_operacao}
     and cod_safra = $P{p_cod_safra}
     and num_versao = $P{p_num_versao}
-group by dsc_sensor    ]]>
+group by dsc_sensor  
+order by dsc_sensor  ]]>
 	</queryString>
 	<field name="DSC_SENSOR" class="java.lang.String"/>
 	<field name="TOT_PONTO" class="java.lang.Integer"/>
@@ -40,7 +41,9 @@ group by dsc_sensor    ]]>
 					</reportElement>
 					<chartTitle/>
 					<chartSubtitle/>
-					<chartLegend/>
+					<chartLegend>
+						<font fontName="Arial" size="8"/>
+					</chartLegend>
 				</chart>
 				<pieDataset>
 					<dataset resetType="Report"/>
@@ -49,7 +52,10 @@ group by dsc_sensor    ]]>
 					<labelExpression><![CDATA[$F{DSC_TOT_PONTO}]]></labelExpression>
 				</pieDataset>
 				<piePlot>
-					<plot/>
+					<plot>
+						<seriesColor seriesOrder="0" color="#48E97E"/>
+						<seriesColor seriesOrder="1" color="#F93A00"/>
+					</plot>
 					<itemLabel/>
 				</piePlot>
 			</pieChart>
