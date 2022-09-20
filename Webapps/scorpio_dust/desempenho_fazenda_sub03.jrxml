@@ -24,7 +24,7 @@ group by dsc_sensor    ]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="5" y="5" width="210" height="190" uuid="3f788eff-4096-47d1-8192-6fc2e535df63"/>
+					<reportElement x="5" y="5" width="210" height="190" uuid="bc4cea8a-25e8-43ae-b584-40bd3a56dc03"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -33,7 +33,7 @@ group by dsc_sensor    ]]>
 					<dataset resetType="Report"/>
 					<keyExpression><![CDATA[$F{DSC_SENSOR}]]></keyExpression>
 					<valueExpression><![CDATA[$F{TOT_PONTO}]]></valueExpression>
-					<labelExpression><![CDATA[$F{DSC_SENSOR}]]></labelExpression>
+					<labelExpression><![CDATA[$F{TOT_PONTO}]]></labelExpression>
 				</pieDataset>
 				<piePlot>
 					<plot/>
