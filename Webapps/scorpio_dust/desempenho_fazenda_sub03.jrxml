@@ -17,14 +17,14 @@ where cod_inquilino = $P{p_cod_inquilino}
     and num_versao = $P{p_num_versao}
 group by dsc_sensor    ]]>
 	</queryString>
-	<field name="DSC_SENSOR" class="java.lang.Integer"/>
+	<field name="DSC_SENSOR" class="java.lang.String"/>
 	<field name="TOT_PONTO" class="java.lang.Integer"/>
 	<summary>
 		<band height="200" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="5" y="5" width="210" height="190" uuid="b8eaa0b2-fcef-47ad-9962-40a85ef2bdbf"/>
+					<reportElement x="5" y="5" width="210" height="190" uuid="3f788eff-4096-47d1-8192-6fc2e535df63"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
