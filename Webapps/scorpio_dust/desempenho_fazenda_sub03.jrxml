@@ -8,30 +8,32 @@
 	<parameter name="p_cod_safra" class="java.lang.String"/>
 	<parameter name="p_num_versao" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select sum(tot_ponto) tot_ponto, sum(tot_ponto_sensor) tot_ponto_sensor
- from vwm_dust_frequencia_fazenda
+		<![CDATA[select dsc_sensor, sum(tot_ponto) tot_ponto
+ from vwm_dust_status_sensor_fazenda_safra
 where cod_inquilino = $P{p_cod_inquilino}
     and cod_fazenda = $P{p_cod_fazenda}
     and cod_operacao = $P{p_cod_operacao}
     and cod_safra = $P{p_cod_safra}
-    and num_versao = $P{p_num_versao}]]>
+    and num_versao = $P{p_num_versao}
+group by dsc_sensor    ]]>
 	</queryString>
+	<field name="DSC_SENSOR" class="java.lang.Integer"/>
 	<field name="TOT_PONTO" class="java.lang.Integer"/>
-	<field name="TOT_PONTO_SENSOR" class="java.lang.Integer"/>
 	<summary>
 		<band height="200" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="10" y="10" width="331" height="180" uuid="2f2b651f-ed62-4fbe-8871-5ba3a97c3103"/>
+					<reportElement x="5" y="5" width="210" height="190" uuid="b8eaa0b2-fcef-47ad-9962-40a85ef2bdbf"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<pieDataset>
 					<dataset resetType="Report"/>
-					<keyExpression><![CDATA["Falhas do Sensor"]]></keyExpression>
+					<keyExpression><![CDATA[$F{DSC_SENSOR}]]></keyExpression>
 					<valueExpression><![CDATA[$F{TOT_PONTO}]]></valueExpression>
+					<labelExpression><![CDATA[$F{DSC_SENSOR}]]></labelExpression>
 				</pieDataset>
 				<piePlot>
 					<plot/>
