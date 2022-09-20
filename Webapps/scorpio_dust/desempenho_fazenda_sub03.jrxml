@@ -25,7 +25,7 @@ where cod_inquilino = $P{p_cod_inquilino}
     and cod_safra = $P{p_cod_safra}
     and num_versao = $P{p_num_versao}
 group by dsc_sensor  
-order by dsc_sensor  ]]>
+order by dsc_sensor]]>
 	</queryString>
 	<field name="DSC_SENSOR" class="java.lang.String"/>
 	<field name="TOT_PONTO" class="java.lang.Integer"/>
@@ -35,13 +35,18 @@ order by dsc_sensor  ]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="5" y="5" width="300" height="210" uuid="a5c43534-fd3c-4e86-9b31-0ba480e8597c">
+					<reportElement x="5" y="5" width="350" height="210" uuid="a5c43534-fd3c-4e86-9b31-0ba480e8597c">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
-					<chartTitle/>
-					<chartSubtitle/>
-					<chartLegend>
+					<chartTitle>
+						<font fontName="Arial" size="8"/>
+						<titleExpression><![CDATA["Sensor"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle>
+						<font fontName="Arial" size="8"/>
+					</chartSubtitle>
+					<chartLegend position="Right">
 						<font fontName="Arial" size="8"/>
 					</chartLegend>
 				</chart>
