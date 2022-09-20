@@ -366,7 +366,7 @@
 				</subreport>
 			</frame>
 			<frame>
-				<reportElement mode="Transparent" x="0" y="415" width="801" height="10" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="4a95d87d-fff1-400b-a554-ca912ee2b67f">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="0" y="415" width="801" height="10" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="4a95d87d-fff1-400b-a554-ca912ee2b67f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -379,7 +379,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
 				</box>
 				<staticText>
-					<reportElement style="Footer" x="295" y="0" width="173" height="10" uuid="5ce768c5-9a36-4af5-aca5-f3473e07953c">
+					<reportElement style="Footer" positionType="FixRelativeToBottom" x="295" y="0" width="173" height="10" uuid="5ce768c5-9a36-4af5-aca5-f3473e07953c">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Center">
