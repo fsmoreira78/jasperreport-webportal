@@ -63,7 +63,7 @@ order by num_prof]]>
 						<font fontName="Arial" size="8"/>
 					</itemLabel>
 					<categoryAxisFormat labelRotation="0.0">
-						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="" axisLineColor="#000000">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000">
 							<labelFont>
 								<font fontName="Arial" size="8"/>
 							</labelFont>

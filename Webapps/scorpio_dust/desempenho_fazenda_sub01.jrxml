@@ -50,7 +50,7 @@
        num_quadra, num_area, qtd_ponto_ha, 
        qtd_faixa_0 + qtd_faixa_1 + qtd_faixa_2 + qtd_faixa_3 tot_ponto,
        qtd_faixa_0, qtd_faixa_1, qtd_faixa_2, qtd_faixa_3
-from vmw_dust_faixa_fazenda_quadra dffq
+from vwm_dust_faixa_fazenda_quadra dffq
 where dffq.cod_inquilino = $P{p_cod_inquilino} 
   and dffq.cod_fazenda = $P{p_cod_fazenda} 
   and dffq.cod_operacao = $P{p_cod_operacao}
