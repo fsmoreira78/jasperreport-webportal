@@ -67,7 +67,9 @@ where a.cod_inquilino = $P{p_inquilino}
   and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
   and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
   and a.flg_tipo in ('TR')
-  and a.cod_bico = nvl($P{p_bico},a.cod_bico)
+  and a.cod_bico in (select regexp_substr($P{p_bico},'[^:]+',1,level) value 
+  	                                from dual 
+  	                                connect by level <= length ($P{p_bico}) - length(replace($P{p_bico},':'))+1)
   and nvl(a.cod_veiculo,0) = nvl($P{p_veiculo},nvl(a.cod_veiculo,0))
   and nvl(a.cod_proprietario,0) = nvl($P{p_proprietario},nvl(a.cod_proprietario,0))  
 order by  b.dsc_bico, a.dta_abast_hora]]>
