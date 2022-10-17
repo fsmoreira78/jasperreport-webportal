@@ -178,7 +178,7 @@ order by dffq.num_quadra]]>
 				<textField pattern="#,##0.00%">
 					<reportElement style="Detail2" x="300" y="0" width="70" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[new Double((($F{QTD_PONTO_HA}.doubleValue() * $F{NUM_AREA}.doubleValue()) / $F{TOT_PONTO}) * 100) ]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new Double(($F{TOT_PONTO}.doubleValue() / ($F{QTD_PONTO_HA}.doubleValue() * $F{NUM_AREA}.doubleValue())) * 100) ]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
 					<reportElement style="Detail2" x="410" y="0" width="70" height="15" backcolor="#FFFFFF" uuid="eb4f4029-dd06-4490-9e03-5cc9cc107757"/>
