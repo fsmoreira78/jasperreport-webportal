@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="desempenho_fazenda_sub01" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9b3c810b-72c7-4c2d-929c-3678e150b01d">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NO_DATA_ADAPTER"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -45,6 +45,7 @@
 	<parameter name="p_dsc_faixa_3" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Prof > 60"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="p_pto_ha" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[select cod_inquilino, cod_fazenda, num_fazenda, dsc_fazenda, 
        num_quadra, num_area, qtd_ponto_ha, 
@@ -177,7 +178,7 @@ order by dffq.num_quadra]]>
 				<textField pattern="#,##0.00%">
 					<reportElement style="Detail2" x="300" y="0" width="70" height="15" uuid="d214f7fb-17d3-4be4-94db-cc23f769ddda"/>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[new Double($F{TOT_PONTO}).doubleValue() / $F{QTD_PONTO_HA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new Double((($F{QTD_PONTO_HA}.doubleValue() * $F{NUM_AREA}.doubleValue()) / $F{TOT_PONTO}) * 100) ]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00%">
 					<reportElement style="Detail2" x="410" y="0" width="70" height="15" backcolor="#FFFFFF" uuid="eb4f4029-dd06-4490-9e03-5cc9cc107757"/>
