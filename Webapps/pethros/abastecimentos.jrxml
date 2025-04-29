@@ -607,10 +607,10 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 		</band>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="200">
+		<band height="100">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<subreport>
-				<reportElement x="0" y="2" width="802" height="30" uuid="21bce3ae-f515-4d23-b669-f7b8624a839f">
+				<reportElement x="0" y="22" width="802" height="30" uuid="21bce3ae-f515-4d23-b669-f7b8624a839f">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -640,6 +640,22 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["abast_resumo.jasper"]]></subreportExpression>
 			</subreport>
+			<staticText>
+				<reportElement style="Footer" x="0" y="2" width="802" height="18" uuid="3f501bbd-9b33-452a-a8b5-ec3cc8f2c373">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[RESUMO]]></text>
+			</staticText>
 		</band>
 	</lastPageFooter>
 	<summary>
