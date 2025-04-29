@@ -607,7 +607,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 		</band>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="100">
+		<band height="100" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<subreport>
 				<reportElement x="0" y="22" width="802" height="30" uuid="21bce3ae-f515-4d23-b669-f7b8624a839f">
