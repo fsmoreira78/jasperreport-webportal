@@ -54,7 +54,7 @@
   	                                connect by level <= length ($P{p_bico}) - length(replace($P{p_bico},':'))+1)
   and nvl(a.cod_veiculo,0) = nvl($P{p_veiculo},nvl(a.cod_veiculo,0))
   and nvl(a.cod_proprietario,0) = nvl($P{p_proprietario},nvl(a.cod_proprietario,0))  
- group by b.dsc_bico, p.dsc_produto, a.flg_tipo, b.flg_comboio, b.seq_bico
+ group by b.dsc_bico,  p.cod_integracao, p.dsc_produto, a.flg_tipo, b.flg_comboio, b.seq_bico
  order by b.flg_comboio desc, b.seq_bico, b.dsc_bico]]>
 	</queryString>
 	<field name="DSC_BICO" class="java.lang.String">
