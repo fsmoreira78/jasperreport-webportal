@@ -580,8 +580,34 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 			</frame>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="35" splitType="Stretch">
+	<pageFooter>
+		<band height="10" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="802" height="10" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#1E1E1E"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
+				</box>
+				<staticText>
+					<reportElement style="Footer" x="315" y="0" width="173" height="10" uuid="9ffa10b5-a64a-47cc-9258-e57820e4e061">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[www.pethros.com.br]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="200">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<subreport>
 				<reportElement x="0" y="2" width="802" height="30" uuid="21bce3ae-f515-4d23-b669-f7b8624a839f">
@@ -615,33 +641,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				<subreportExpression><![CDATA["abast_resumo.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
-	</columnFooter>
-	<pageFooter>
-		<band height="10" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<frame>
-				<reportElement mode="Transparent" x="0" y="0" width="802" height="10" forecolor="#FFFFFF" backcolor="#C8C8C8" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<box>
-					<pen lineColor="#1E1E1E"/>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#1E1E1E"/>
-				</box>
-				<staticText>
-					<reportElement style="Footer" x="315" y="0" width="173" height="10" uuid="9ffa10b5-a64a-47cc-9258-e57820e4e061">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Center">
-						<font size="6"/>
-					</textElement>
-					<text><![CDATA[www.pethros.com.br]]></text>
-				</staticText>
-			</frame>
-		</band>
-	</pageFooter>
+	</lastPageFooter>
 	<summary>
 		<band splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
