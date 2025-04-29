@@ -33,6 +33,7 @@
 	<parameter name="p_proprietario" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select b.dsc_bico,
+ p.cod_integracao,
  p.dsc_produto,
  a.flg_tipo,
  b.flg_comboio,
@@ -58,6 +59,9 @@
 	</queryString>
 	<field name="DSC_BICO" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="DSC_BICO"/>
+	</field>
+	<field name="COD_INTEGRACAO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="COD_INTEGRACAO"/>
 	</field>
 	<field name="DSC_PRODUTO" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="DSC_PRODUTO"/>
@@ -168,11 +172,20 @@
 						<text><![CDATA[PRODUTO:]]></text>
 					</staticText>
 					<textField>
-						<reportElement key="" style="SubTitle" positionType="Float" x="61" y="2" width="360" height="12" forecolor="#000000" uuid="400250b0-866d-423c-b042-f976290372fc"/>
+						<reportElement key="" style="SubTitle" positionType="Float" x="125" y="2" width="360" height="12" forecolor="#000000" uuid="400250b0-866d-423c-b042-f976290372fc"/>
 						<textElement>
 							<font isBold="false"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{DSC_PRODUTO}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement key="" style="SubTitle" positionType="Float" x="63" y="2" width="60" height="12" forecolor="#000000" uuid="c4108d10-85db-4348-9f90-803a1a25bd9c">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{COD_INTEGRACAO}]]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
