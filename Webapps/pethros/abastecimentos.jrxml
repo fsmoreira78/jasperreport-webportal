@@ -145,7 +145,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 						<text><![CDATA[TOTAL POR BICO]]></text>
 					</staticText>
 					<textField pattern="#,##0.00">
-						<reportElement key="" style="Detail" positionType="Float" x="98" y="0" width="60" height="12" forecolor="#1E1E1E" uuid="e3d3b125-fd3e-4aa5-93ce-899348152884"/>
+						<reportElement key="" style="Detail" positionType="Float" x="98" y="0" width="56" height="12" forecolor="#1E1E1E" uuid="e3d3b125-fd3e-4aa5-93ce-899348152884"/>
 						<textElement textAlignment="Right">
 							<font isBold="false"/>
 						</textElement>
@@ -191,7 +191,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
 					<textField pattern="#,##0.00">
-						<reportElement key="" style="Detail" positionType="Float" x="98" y="0" width="60" height="12" uuid="3bf4978f-2a9a-45c9-b1ab-31adeb9838f3"/>
+						<reportElement key="" style="Detail" positionType="Float" x="98" y="0" width="56" height="12" uuid="3bf4978f-2a9a-45c9-b1ab-31adeb9838f3"/>
 						<textElement textAlignment="Right">
 							<font isBold="false"/>
 						</textElement>
@@ -245,7 +245,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[Enc.Final]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="160" y="55" width="18" height="12" forecolor="#FFFFFF" uuid="ec4a6a17-8167-45f3-b7bb-bbaaeaea90d5">
+				<reportElement style="Column header" x="156" y="55" width="18" height="12" forecolor="#FFFFFF" uuid="ec4a6a17-8167-45f3-b7bb-bbaaeaea90d5">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -254,7 +254,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="180" y="55" width="68" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d">
+				<reportElement style="Column header" x="176" y="55" width="68" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -263,21 +263,21 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[Data / Hora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="250" y="55" width="63" height="12" forecolor="#FFFFFF" uuid="f824d5ef-6f43-44d6-b02c-71d6a9007724"/>
+				<reportElement style="Column header" x="246" y="55" width="63" height="12" forecolor="#FFFFFF" uuid="f824d5ef-6f43-44d6-b02c-71d6a9007724"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Proprietário]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="315" y="55" width="40" height="12" forecolor="#FFFFFF" uuid="8fa09af9-08b8-43f8-8cfe-cf4a8a102854"/>
+				<reportElement style="Column header" x="311" y="55" width="40" height="12" forecolor="#FFFFFF" uuid="8fa09af9-08b8-43f8-8cfe-cf4a8a102854"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="420" y="55" width="35" height="12" forecolor="#FFFFFF" uuid="b39a3baf-5829-44ff-91fa-79f22c4d226b">
+				<reportElement style="Column header" x="416" y="55" width="40" height="12" forecolor="#FFFFFF" uuid="b39a3baf-5829-44ff-91fa-79f22c4d226b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -286,7 +286,7 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[Placa]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="357" y="55" width="61" height="12" forecolor="#FFFFFF" uuid="44798f24-fcb7-46bc-a29e-1b9d3c0f0af3"/>
+				<reportElement style="Column header" x="353" y="55" width="61" height="12" forecolor="#FFFFFF" uuid="44798f24-fcb7-46bc-a29e-1b9d3c0f0af3"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
@@ -323,7 +323,9 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[No. do CHIP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="112" y="55" width="46" height="12" forecolor="#FFFFFF" uuid="139bdfa7-9e38-4468-b0b5-c59c50116335"/>
+				<reportElement style="Column header" x="112" y="55" width="42" height="12" forecolor="#FFFFFF" uuid="139bdfa7-9e38-4468-b0b5-c59c50116335">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Right">
 					<font isBold="false"/>
 				</textElement>
@@ -484,38 +486,38 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 					<textFieldExpression><![CDATA[$F{NUM_ENCERRANTE_INICIAL}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="160" y="0" width="18" height="12" uuid="566d456d-5a4c-4200-aded-45dcf862f8e2">
+					<reportElement style="Detail" positionType="Float" x="156" y="0" width="18" height="12" uuid="566d456d-5a4c-4200-aded-45dcf862f8e2">
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{FLG_TIPO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="180" y="0" width="68" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b">
+					<reportElement style="Detail" positionType="Float" x="176" y="0" width="68" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{DTA_ABAST_HORA}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="250" y="0" width="63" height="12" uuid="8aa36d07-ac09-4440-b91e-b766ca665f7a"/>
+					<reportElement style="Detail" positionType="Float" x="246" y="0" width="63" height="12" uuid="8aa36d07-ac09-4440-b91e-b766ca665f7a"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{NOM_PROPRIETARIO}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="315" y="0" width="40" height="12" uuid="e219676a-4e67-4e8d-a76e-4e54d8395e83"/>
+					<reportElement style="Detail" positionType="Float" x="311" y="0" width="40" height="12" uuid="e219676a-4e67-4e8d-a76e-4e54d8395e83"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{NUM_VEICULO}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="420" y="0" width="35" height="12" uuid="5983644d-eed2-4409-b889-7e859d562a01">
+					<reportElement style="Detail" positionType="Float" x="416" y="0" width="40" height="12" uuid="5983644d-eed2-4409-b889-7e859d562a01">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{NUM_PLACA}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement key="" style="Detail" positionType="Float" x="357" y="0" width="61" height="12" uuid="dcabda33-7b4e-4899-a67b-f358f1a4aac9"/>
+					<reportElement key="" style="Detail" positionType="Float" x="353" y="0" width="61" height="12" uuid="dcabda33-7b4e-4899-a67b-f358f1a4aac9"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{DSC_MODELO}]]></textFieldExpression>
 				</textField>
@@ -544,7 +546,9 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 					<textFieldExpression><![CDATA[$F{NUM_CHIP}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="#,##0.00">
-					<reportElement style="Detail" positionType="Float" x="112" y="0" width="46" height="12" uuid="63508e4d-192c-45bf-b009-d1c9919d916c"/>
+					<reportElement style="Detail" positionType="Float" x="112" y="0" width="42" height="12" uuid="63508e4d-192c-45bf-b009-d1c9919d916c">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
 					<textElement textAlignment="Right" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{QTD_ABAST}]]></textFieldExpression>
 				</textField>
