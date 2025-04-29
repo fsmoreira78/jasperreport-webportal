@@ -15,8 +15,8 @@
 		</conditionalStyle>
 	</style>
 	<style name="Footer" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
-	<parameter name="p_inquilino" class="java.lang.Long"/>
-	<parameter name="p_empresa" class="java.lang.Long"/>
+	<parameter name="p_inquilino" class="java.lang.String"/>
+	<parameter name="p_empresa" class="java.lang.String"/>
 	<parameter name="p_inicio" class="java.lang.String"/>
 	<parameter name="p_termino" class="java.lang.String"/>
 	<parameter name="p_bico" class="java.lang.String"/>
