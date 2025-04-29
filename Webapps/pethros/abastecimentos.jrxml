@@ -64,7 +64,7 @@ left outer join tb_pessoa op on (op.cod_inquilino = a.cod_inquilino and op.cod_p
 left outer join tb_operacao o on (o.cod_inquilino = a.cod_inquilino and o.cod_operacao  = a.cod_operacao)
 where a.cod_inquilino = $P{p_inquilino} 
   and a.cod_empresa =  $P{p_empresa} 
-  and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
+  and a.dta_abast_hora >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
   and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
   and a.flg_tipo in ('AB','CB')
   and a.cod_bico in (select regexp_substr($P{p_bico},'[^:]+',1,level) value 
@@ -581,7 +581,40 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<subreport>
+				<reportElement x="0" y="2" width="802" height="30" uuid="21bce3ae-f515-4d23-b669-f7b8624a839f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<subreportParameter name="p_inquilino">
+					<subreportParameterExpression><![CDATA[$P{p_inquilino}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_empresa">
+					<subreportParameterExpression><![CDATA[$P{p_empresa}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_inicio">
+					<subreportParameterExpression><![CDATA[$P{p_inicio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_termino">
+					<subreportParameterExpression><![CDATA[$P{p_termino}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_bico">
+					<subreportParameterExpression><![CDATA[$P{p_bico}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_veiculo">
+					<subreportParameterExpression><![CDATA[$P{p_veiculo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_proprietario">
+					<subreportParameterExpression><![CDATA[$P{p_proprietario}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["abast_resumo.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="10" splitType="Stretch">
@@ -610,6 +643,8 @@ order by  b.dsc_bico, a.dta_abast_hora]]>
 		</band>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
 	</summary>
 </jasperReport>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="abast_resumo" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="5" bottomMargin="5" uuid="64ccb586-6e2d-4053-a29d-b10820e3326f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="OracleAWS"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Column header" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Title" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="16" isBold="true"/>
+	<style name="Title2" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="12" isBold="false"/>
+	<style name="SubTitle" forecolor="#FFFFFF" hTextAlign="Left" hImageAlign="Left" fontName="Arial" fontSize="10" isBold="false"/>
+	<style name="Detail" mode="Transparent" fontName="Arial" fontSize="8"/>
+	<style name="Row" mode="Transparent" fontName="Arial" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#DCDCDC"/>
+		</conditionalStyle>
+	</style>
+	<style name="Footer" forecolor="#1E1E1E" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="10" isBold="false"/>
+	<parameter name="p_inquilino" class="java.lang.Long"/>
+	<parameter name="p_empresa" class="java.lang.Long"/>
+	<parameter name="p_inicio" class="java.lang.String"/>
+	<parameter name="p_termino" class="java.lang.String"/>
+	<parameter name="p_bico" class="java.lang.String"/>
+	<parameter name="p_veiculo" class="java.lang.String"/>
+	<parameter name="p_proprietario" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select b.dsc_bico,
+ p.dsc_produto,
+ a.flg_tipo,
+ b.flg_comboio,
+ b.seq_bico,
+ sum(a.qtd_abast) qtd_abast,
+ max(a.num_encerrante) max_encerrante,
+ min(a.num_encerrante) min_encerrante
+ from webapps.tb_abast a
+ join webapps.tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
+ join webapps.tb_produto p on (p.cod_inquilino = a.cod_inquilino and p.cod_produto = a.cod_produto)
+ where a.cod_inquilino = $P{p_inquilino} 
+  and a.cod_empresa =  $P{p_empresa} 
+  and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
+  and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
+  and a.flg_tipo in ('AB','CB')
+  and a.cod_bico in (select regexp_substr($P{p_bico},'[^:]+',1,level) value 
+  	                                from dual 
+  	                                connect by level <= length ($P{p_bico}) - length(replace($P{p_bico},':'))+1)
+  and nvl(a.cod_veiculo,0) = nvl($P{p_veiculo},nvl(a.cod_veiculo,0))
+  and nvl(a.cod_proprietario,0) = nvl($P{p_proprietario},nvl(a.cod_proprietario,0))  
+ group by b.dsc_bico, p.dsc_produto, a.flg_tipo, b.flg_comboio, b.seq_bico
+ order by b.flg_comboio desc, b.seq_bico, b.dsc_bico]]>
+	</queryString>
+	<field name="DSC_BICO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DSC_BICO"/>
+	</field>
+	<field name="DSC_PRODUTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DSC_PRODUTO"/>
+	</field>
+	<field name="FLG_TIPO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FLG_TIPO"/>
+	</field>
+	<field name="FLG_COMBOIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FLG_COMBOIO"/>
+	</field>
+	<field name="SEQ_BICO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="SEQ_BICO"/>
+	</field>
+	<field name="QTD_ABAST" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="QTD_ABAST"/>
+	</field>
+	<field name="MAX_ENCERRANTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MAX_ENCERRANTE"/>
+	</field>
+	<field name="MIN_ENCERRANTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MIN_ENCERRANTE"/>
+	</field>
+	<variable name="SOMAR_PRODUTO" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto" calculation="Sum">
+		<variableExpression><![CDATA[$F{QTD_ABAST}]]></variableExpression>
+	</variable>
+	<group name="Grupo Produto">
+		<groupExpression><![CDATA[$F{DSC_PRODUTO}]]></groupExpression>
+		<groupHeader>
+			<band height="35">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="18" width="802" height="16" backcolor="#505050" uuid="7fb6be94-ab33-4b19-b05c-18223ec75191">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<staticText>
+						<reportElement style="Footer" x="30" y="2" width="80" height="12" forecolor="#FFFFFF" uuid="53bc41a6-6765-4b92-98a6-18fd280610f4">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[Enc.Inicial]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Footer" x="112" y="2" width="80" height="12" forecolor="#FFFFFF" uuid="1fec6f02-116b-4455-a08d-3029d402856b">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[Enc.Final]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Footer" x="196" y="2" width="60" height="12" forecolor="#FFFFFF" uuid="af4c5b86-bf38-4751-aaad-cdb02e897563">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[Qtde.]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Footer" x="260" y="2" width="30" height="12" forecolor="#FFFFFF" uuid="e3858406-02e1-438a-84fb-31989ffce3d8">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Center">
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[Tipo]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Footer" x="294" y="2" width="180" height="12" forecolor="#FFFFFF" uuid="3df70f3d-0af7-4cc9-8c6d-52bee795d4f3">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Left">
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[Bico]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement key="" mode="Opaque" x="0" y="0" width="802" height="16" forecolor="#C8C8C8" backcolor="#C8C8C8" uuid="ce1d64bb-144a-4113-af8c-5503a83b73eb">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<staticText>
+						<reportElement key="" style="SubTitle" x="1" y="2" width="60" height="12" forecolor="#000000" uuid="0b912568-c3bc-4cb9-926d-62bfcf8c0b0e">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						</reportElement>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[PRODUTO:]]></text>
+					</staticText>
+					<textField>
+						<reportElement key="" style="SubTitle" positionType="Float" x="61" y="2" width="360" height="12" forecolor="#000000" uuid="400250b0-866d-423c-b042-f976290372fc"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{DSC_PRODUTO}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<frame>
+					<reportElement x="0" y="0" width="802" height="18" uuid="673215de-48ec-4849-a113-8cb8fc2861ae">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textField pattern="#,##0.00">
+						<reportElement style="Footer" x="170" y="1" width="86" height="16" uuid="fb9cee3c-11c7-4652-a977-e833104f332f">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right"/>
+						<textFieldExpression><![CDATA[$V{SOMAR_PRODUTO}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement style="Footer" x="10" y="1" width="160" height="16" uuid="2111b47c-2491-4ad3-9e82-97ce2f9bfc89">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<text><![CDATA[TOTAL POR PRODUTO]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="2" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement key="" style="SubTitle" x="294" y="2" width="180" height="12" forecolor="#000000" uuid="7fc24766-f0f9-46d8-a48c-9a901c5ef231">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DSC_BICO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="" style="SubTitle" x="260" y="2" width="30" height="12" forecolor="#000000" uuid="b2d3512a-ba2f-4005-8852-3bcc3586126b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FLG_TIPO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement key="" style="SubTitle" x="30" y="2" width="80" height="12" forecolor="#000000" uuid="e66575f5-26ec-4e17-8592-d3c631fa3872">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{MIN_ENCERRANTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement key="" style="SubTitle" x="112" y="2" width="80" height="12" forecolor="#000000" uuid="27ff1531-97ce-424f-b630-45e3d49bcdaf">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{MAX_ENCERRANTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement key="" style="SubTitle" x="196" y="2" width="60" height="12" forecolor="#000000" uuid="93e68bfc-cbb0-451b-97a0-573843e6a9ba">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{QTD_ABAST}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
