@@ -40,7 +40,8 @@
  b.seq_bico,
  sum(a.qtd_abast) qtd_abast,
  max(a.num_encerrante) KEEP (DENSE_RANK LAST ORDER BY a.dta_abast_hora) max_encerrante,
- min(a.num_encerrante) KEEP (DENSE_RANK FIRST ORDER BY a.dta_abast_hora) min_encerrante
+ min(a.num_encerrante) KEEP (DENSE_RANK FIRST ORDER BY a.dta_abast_hora) min_encerrante,
+ min(a.qtd_abast) KEEP (DENSE_RANK FIRST ORDER BY a.dta_abast_hora) min_abast
  from webapps.tb_abast a
  join webapps.tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
  join webapps.tb_produto p on (p.cod_inquilino = a.cod_inquilino and p.cod_produto = a.cod_produto)
@@ -75,20 +76,26 @@
 	<field name="SEQ_BICO" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="SEQ_BICO"/>
 	</field>
-	<field name="QTD_ABAST" class="java.math.BigDecimal">
+	<field name="QTD_ABAST" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="QTD_ABAST"/>
 	</field>
-	<field name="MAX_ENCERRANTE" class="java.math.BigDecimal">
+	<field name="MAX_ENCERRANTE" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="MAX_ENCERRANTE"/>
 	</field>
-	<field name="MIN_ENCERRANTE" class="java.math.BigDecimal">
+	<field name="MIN_ENCERRANTE" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="MIN_ENCERRANTE"/>
+	</field>
+	<field name="MIN_ABAST" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="MIN_ABAST"/>
 	</field>
 	<variable name="SOMAR_PRODUTO" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto" calculation="Sum">
 		<variableExpression><![CDATA[$F{QTD_ABAST}]]></variableExpression>
 	</variable>
 	<variable name="DIFERENCA_ENCERRANTE" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto">
-		<variableExpression><![CDATA[$F{MAX_ENCERRANTE}.doubleValue() - $F{MIN_ENCERRANTE}.doubleValue()]]></variableExpression>
+		<variableExpression><![CDATA[$F{MAX_ENCERRANTE}.doubleValue() - ($F{MIN_ENCERRANTE}.doubleValue() - $F{MIN_ABAST}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="MIN_ENCERRANTE" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto">
+		<variableExpression><![CDATA[$F{MIN_ENCERRANTE}.doubleValue() - $F{MIN_ABAST}.doubleValue()]]></variableExpression>
 	</variable>
 	<group name="Grupo Produto">
 		<groupExpression><![CDATA[$F{DSC_PRODUTO}]]></groupExpression>
@@ -274,7 +281,7 @@
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{MIN_ENCERRANTE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{MIN_ENCERRANTE}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
 				<reportElement key="" style="SubTitle" x="112" y="2" width="80" height="12" forecolor="#000000" uuid="27ff1531-97ce-424f-b630-45e3d49bcdaf">
