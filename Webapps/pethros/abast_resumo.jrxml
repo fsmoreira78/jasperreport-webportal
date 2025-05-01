@@ -91,11 +91,14 @@
 	<variable name="SOMAR_PRODUTO" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto" calculation="Sum">
 		<variableExpression><![CDATA[$F{QTD_ABAST}]]></variableExpression>
 	</variable>
-	<variable name="DIFERENCA_ENCERRANTE" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto">
+	<variable name="TOTAL_ENCERRANTE" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto">
 		<variableExpression><![CDATA[$F{MAX_ENCERRANTE}.doubleValue() - ($F{MIN_ENCERRANTE}.doubleValue() - $F{MIN_ABAST}.doubleValue())]]></variableExpression>
 	</variable>
 	<variable name="MIN_ENCERRANTE" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto">
 		<variableExpression><![CDATA[$F{MIN_ENCERRANTE}.doubleValue() - $F{MIN_ABAST}.doubleValue()]]></variableExpression>
+	</variable>
+	<variable name="DIF_ENCERRANTE" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto">
+		<variableExpression><![CDATA[$V{TOTAL_ENCERRANTE}.doubleValue() - $F{QTD_ABAST}.doubleValue()]]></variableExpression>
 	</variable>
 	<group name="Grupo Produto">
 		<groupExpression><![CDATA[$F{DSC_PRODUTO}]]></groupExpression>
@@ -132,11 +135,11 @@
 						<text><![CDATA[Enc.Final]]></text>
 					</staticText>
 					<staticText>
-						<reportElement style="Footer" x="196" y="2" width="60" height="12" forecolor="#FFFFFF" uuid="af4c5b86-bf38-4751-aaad-cdb02e897563">
-							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<reportElement style="Footer" x="267" y="2" width="70" height="12" forecolor="#FFFFFF" uuid="af4c5b86-bf38-4751-aaad-cdb02e897563">
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Right">
 							<font isBold="false"/>
@@ -144,7 +147,7 @@
 						<text><![CDATA[Qtde.]]></text>
 					</staticText>
 					<staticText>
-						<reportElement style="Footer" x="260" y="2" width="30" height="12" forecolor="#FFFFFF" uuid="e3858406-02e1-438a-84fb-31989ffce3d8">
+						<reportElement style="Footer" x="417" y="2" width="30" height="12" forecolor="#FFFFFF" uuid="e3858406-02e1-438a-84fb-31989ffce3d8">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -156,7 +159,7 @@
 						<text><![CDATA[Tipo]]></text>
 					</staticText>
 					<staticText>
-						<reportElement style="Footer" x="294" y="2" width="180" height="12" forecolor="#FFFFFF" uuid="3df70f3d-0af7-4cc9-8c6d-52bee795d4f3">
+						<reportElement style="Footer" x="451" y="2" width="180" height="12" forecolor="#FFFFFF" uuid="3df70f3d-0af7-4cc9-8c6d-52bee795d4f3">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -168,16 +171,26 @@
 						<text><![CDATA[Bico]]></text>
 					</staticText>
 					<staticText>
-						<reportElement style="Footer" x="675" y="2" width="120" height="12" forecolor="#FFFFFF" uuid="0ab59037-5235-4a4a-9ba3-3146499f5481">
+						<reportElement style="Footer" x="194" y="2" width="70" height="12" forecolor="#FFFFFF" uuid="0ab59037-5235-4a4a-9ba3-3146499f5481">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[Enc.Total]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Footer" x="340" y="2" width="70" height="12" forecolor="#FFFFFF" uuid="10415861-5ff3-4666-bf90-0b3dcdd582d8">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<property name="com.jaspersoft.studio.unit.x" value="px"/>
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Right">
 							<font isBold="false"/>
 						</textElement>
-						<text><![CDATA[Diferença de Encerrante]]></text>
+						<text><![CDATA[Diferença]]></text>
 					</staticText>
 				</frame>
 				<frame>
@@ -257,7 +270,7 @@
 		<band height="16" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement key="" style="SubTitle" x="294" y="2" width="180" height="12" forecolor="#000000" uuid="7fc24766-f0f9-46d8-a48c-9a901c5ef231">
+				<reportElement key="" style="SubTitle" x="451" y="2" width="180" height="12" forecolor="#000000" uuid="7fc24766-f0f9-46d8-a48c-9a901c5ef231">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -265,7 +278,7 @@
 				<textFieldExpression><![CDATA[$F{DSC_BICO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement key="" style="SubTitle" x="260" y="2" width="30" height="12" forecolor="#000000" uuid="b2d3512a-ba2f-4005-8852-3bcc3586126b">
+				<reportElement key="" style="SubTitle" x="417" y="2" width="30" height="12" forecolor="#000000" uuid="b2d3512a-ba2f-4005-8852-3bcc3586126b">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -294,24 +307,32 @@
 				<textFieldExpression><![CDATA[$F{MAX_ENCERRANTE}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
-				<reportElement key="" style="SubTitle" x="196" y="2" width="60" height="12" forecolor="#000000" uuid="93e68bfc-cbb0-451b-97a0-573843e6a9ba">
+				<reportElement key="" style="SubTitle" x="267" y="2" width="70" height="12" forecolor="#000000" uuid="93e68bfc-cbb0-451b-97a0-573843e6a9ba">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{QTD_ABAST}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
-				<reportElement key="" style="SubTitle" x="675" y="2" width="120" height="12" forecolor="#000000" uuid="736cd6d7-0eab-4599-bbf2-dd2c061e3bf0">
+				<reportElement key="" style="SubTitle" x="194" y="2" width="70" height="12" forecolor="#000000" uuid="736cd6d7-0eab-4599-bbf2-dd2c061e3bf0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{TOTAL_ENCERRANTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement key="" style="SubTitle" x="340" y="2" width="70" height="12" forecolor="#000000" uuid="e645be8c-d918-4d8f-9b39-a200544aa598">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$V{DIFERENCA_ENCERRANTE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{DIF_ENCERRANTE}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
