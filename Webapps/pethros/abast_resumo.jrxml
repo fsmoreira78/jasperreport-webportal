@@ -87,6 +87,9 @@
 	<variable name="SOMAR_PRODUTO" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto" calculation="Sum">
 		<variableExpression><![CDATA[$F{QTD_ABAST}]]></variableExpression>
 	</variable>
+	<variable name="DIFERENCA_ENCERRANTE" class="java.lang.Double" resetType="Group" resetGroup="Grupo Produto">
+		<variableExpression><![CDATA[$F{MAX_ENCERRANTE}.doubleValue() - $F{MIN_ENCERRANTE}.doubleValue()]]></variableExpression>
+	</variable>
 	<group name="Grupo Produto">
 		<groupExpression><![CDATA[$F{DSC_PRODUTO}]]></groupExpression>
 		<groupHeader>
@@ -156,6 +159,18 @@
 							<font isBold="false"/>
 						</textElement>
 						<text><![CDATA[Bico]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Footer" x="675" y="2" width="120" height="12" forecolor="#FFFFFF" uuid="0ab59037-5235-4a4a-9ba3-3146499f5481">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false"/>
+						</textElement>
+						<text><![CDATA[Diferença de Encerrante]]></text>
 					</staticText>
 				</frame>
 				<frame>
@@ -280,6 +295,16 @@
 				</reportElement>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{QTD_ABAST}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement key="" style="SubTitle" x="675" y="2" width="120" height="12" forecolor="#000000" uuid="736cd6d7-0eab-4599-bbf2-dd2c061e3bf0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{DIFERENCA_ENCERRANTE}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
