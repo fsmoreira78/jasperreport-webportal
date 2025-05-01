@@ -235,7 +235,7 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="183" y="55" width="55" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d">
+				<reportElement style="Column header" x="181" y="55" width="70" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -244,14 +244,14 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[Data / Hora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="245" y="55" width="24" height="12" forecolor="#FFFFFF" uuid="6dbb56ba-c50c-4cb7-bb66-de2bc459b9f1"/>
+				<reportElement style="Column header" x="254" y="55" width="24" height="12" forecolor="#FFFFFF" uuid="6dbb56ba-c50c-4cb7-bb66-de2bc459b9f1"/>
 				<textElement textAlignment="Center">
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Tag?]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="273" y="55" width="75" height="12" forecolor="#FFFFFF" uuid="f07bd22c-eca0-4dbb-a347-cd02ee3033f5">
+				<reportElement style="Column header" x="282" y="55" width="75" height="12" forecolor="#FFFFFF" uuid="f07bd22c-eca0-4dbb-a347-cd02ee3033f5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -267,15 +267,16 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 				<text><![CDATA[Qtde.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="351" y="55" width="100" height="12" forecolor="#FFFFFF" uuid="d333a667-c7cf-4d8a-b0d6-17f7a386dadc"/>
+				<reportElement style="Column header" x="360" y="55" width="100" height="12" forecolor="#FFFFFF" uuid="d333a667-c7cf-4d8a-b0d6-17f7a386dadc"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Frentista]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="453" y="55" width="100" height="12" forecolor="#FFFFFF" uuid="bcf8fca3-61d8-4604-a843-529b0db584d3">
+				<reportElement style="Column header" x="462" y="55" width="90" height="12" forecolor="#FFFFFF" uuid="bcf8fca3-61d8-4604-a843-529b0db584d3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement>
 					<font isBold="false"/>
@@ -425,19 +426,19 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 					<textFieldExpression><![CDATA[$F{FLG_TIPO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="183" y="0" width="60" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b">
+					<reportElement style="Detail" positionType="Float" x="181" y="0" width="70" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{DTA_ABAST_HORA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="">
-					<reportElement style="Detail" positionType="Float" x="245" y="0" width="24" height="12" uuid="7dbbc041-7a09-4602-b474-bc2e951975ac"/>
+					<reportElement style="Detail" positionType="Float" x="254" y="0" width="24" height="12" uuid="7dbbc041-7a09-4602-b474-bc2e951975ac"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{FLG_TAG}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="273" y="0" width="75" height="12" uuid="d7b60f73-d3fe-4dd0-9b96-764e74b0190a">
+					<reportElement style="Detail" positionType="Float" x="282" y="0" width="75" height="12" uuid="d7b60f73-d3fe-4dd0-9b96-764e74b0190a">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
@@ -449,14 +450,13 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 					<textFieldExpression><![CDATA[$F{QTD_ABAST}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="351" y="0" width="100" height="12" uuid="3efd965c-a3aa-4074-9883-c5a0e3dbd4e3"/>
+					<reportElement style="Detail" positionType="Float" x="360" y="0" width="100" height="12" uuid="3efd965c-a3aa-4074-9883-c5a0e3dbd4e3"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{NOM_FRENTISTA}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="453" y="0" width="100" height="12" uuid="bd07ae73-ccf4-4a84-bec3-161bb7dab5ff">
+					<reportElement style="Detail" positionType="Float" x="462" y="0" width="90" height="12" uuid="bd07ae73-ccf4-4a84-bec3-161bb7dab5ff">
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{DSC_OPERACAO}]]></textFieldExpression>

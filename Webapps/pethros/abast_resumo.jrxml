@@ -39,8 +39,8 @@
  b.flg_comboio,
  b.seq_bico,
  sum(a.qtd_abast) qtd_abast,
- max(a.num_encerrante) max_encerrante,
- min(a.num_encerrante) min_encerrante
+ last(a.num_encerrante) max_encerrante,
+ first(a.num_encerrante) min_encerrante
  from webapps.tb_abast a
  join webapps.tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
  join webapps.tb_produto p on (p.cod_inquilino = a.cod_inquilino and p.cod_produto = a.cod_produto)
