@@ -208,7 +208,7 @@ order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>
 						<text><![CDATA[TOTAL POR VEÍCULO]]></text>
 					</staticText>
 					<textField pattern="#,##0.0" isBlankWhenNull="false">
-						<reportElement style="Detail" positionType="Float" x="177" y="0" width="47" height="12" uuid="59c0a6f2-702a-4a64-aa97-db31e3a3d66c">
+						<reportElement style="Detail" positionType="Float" x="182" y="0" width="47" height="12" uuid="59c0a6f2-702a-4a64-aa97-db31e3a3d66c">
 							<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 							<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 						</reportElement>
@@ -249,7 +249,7 @@ order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>
 				</reportElement>
 			</frame>
 			<staticText>
-				<reportElement style="Column header" x="92" y="55" width="18" height="12" forecolor="#FFFFFF" uuid="ec4a6a17-8167-45f3-b7bb-bbaaeaea90d5">
+				<reportElement style="Column header" x="109" y="55" width="18" height="12" forecolor="#FFFFFF" uuid="ec4a6a17-8167-45f3-b7bb-bbaaeaea90d5">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -258,14 +258,16 @@ order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="20" y="55" width="62" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d"/>
+				<reportElement style="Column header" x="20" y="55" width="80" height="12" forecolor="#FFFFFF" uuid="e7859bd5-4298-45f5-88ab-af36442b974d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Data / Hora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="177" y="55" width="47" height="12" forecolor="#FFFFFF" uuid="f824d5ef-6f43-44d6-b02c-71d6a9007724">
+				<reportElement style="Column header" x="182" y="55" width="47" height="12" forecolor="#FFFFFF" uuid="f824d5ef-6f43-44d6-b02c-71d6a9007724">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -299,7 +301,7 @@ order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>
 				<text><![CDATA[Bico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="120" y="55" width="47" height="12" forecolor="#FFFFFF" uuid="5d1ff214-b5fc-4c00-a916-533e4334a24c">
+				<reportElement style="Column header" x="131" y="55" width="47" height="12" forecolor="#FFFFFF" uuid="5d1ff214-b5fc-4c00-a916-533e4334a24c">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right">
@@ -443,7 +445,7 @@ order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="92" y="0" width="18" height="12" uuid="566d456d-5a4c-4200-aded-45dcf862f8e2">
+					<reportElement style="Detail" positionType="Float" x="109" y="0" width="18" height="12" uuid="566d456d-5a4c-4200-aded-45dcf862f8e2">
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					</reportElement>
@@ -451,12 +453,14 @@ order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>
 					<textFieldExpression><![CDATA[$F{FLG_TIPO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="20" y="0" width="62" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b"/>
+					<reportElement style="Detail" positionType="Float" x="20" y="0" width="80" height="12" uuid="552c8a03-26ad-4b5f-b7ae-13f7610a689b">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{DTA_ABAST_HORA}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.0" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="177" y="0" width="47" height="12" uuid="8aa36d07-ac09-4440-b91e-b766ca665f7a">
+					<reportElement style="Detail" positionType="Float" x="182" y="0" width="47" height="12" uuid="8aa36d07-ac09-4440-b91e-b766ca665f7a">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					</reportElement>
@@ -479,7 +483,7 @@ order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>
 					<textFieldExpression><![CDATA[$F{DSC_BICO}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" pattern="#,##0.0" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="120" y="0" width="47" height="12" uuid="56741adf-a364-450b-82d3-5becd620ec42">
+					<reportElement style="Detail" positionType="Float" x="131" y="0" width="47" height="12" uuid="56741adf-a364-450b-82d3-5becd620ec42">
 						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					</reportElement>
 					<textElement textAlignment="Right" verticalAlignment="Middle"/>
