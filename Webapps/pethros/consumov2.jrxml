@@ -48,7 +48,7 @@
   a.qtd_abast,
   a.flg_registrador,
   a.num_registrador,
-  lag(a.num_registrador,1,0) OVER (PARTITION BY a.cod_veiculo ORDER BY a.cod_veiculo, a.dta_abast_hora) AS reg_anterior                           
+  lag(a.num_registrador,1,a.num_registrador) OVER (PARTITION BY a.cod_veiculo ORDER BY a.cod_veiculo, a.dta_abast_hora) AS reg_anterior                           
 from tb_abast a
 join tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
 join tb_produto pr on (pr.cod_inquilino = a.cod_inquilino and pr.cod_produto = a.cod_produto)
