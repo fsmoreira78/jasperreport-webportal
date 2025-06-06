@@ -76,6 +76,7 @@ where a.cod_inquilino = $P{p_inquilino}
   and a.dta_abast_hora >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
   and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
   and a.flg_tipo in ('AB','CB')
+  and a.flg_status <> pkg_consts.PETHROS_STATUS_EXCLUIDO
   and a.cod_bico in (select regexp_substr($P{p_bico},'[^:]+',1,level) value 
   	                                from dual 
   	                                connect by level <= length ($P{p_bico}) - length(replace($P{p_bico},':'))+1)

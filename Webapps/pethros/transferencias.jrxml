@@ -64,9 +64,10 @@ left outer join tb_pessoa op on (op.cod_inquilino = a.cod_inquilino and op.cod_p
 left outer join tb_operacao o on (o.cod_inquilino = a.cod_inquilino and o.cod_operacao  = a.cod_operacao)
 where a.cod_inquilino = $P{p_inquilino} 
   and a.cod_empresa =  $P{p_empresa} 
-  and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
+  and a.dta_abast_hora >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
   and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
   and a.flg_tipo in ('TR')
+  and a.flg_status <> pkg_consts.PETHROS_STATUS_EXCLUIDO
   and a.cod_bico in (select regexp_substr($P{p_bico},'[^:]+',1,level) value 
   	                                from dual 
   	                                connect by level <= length ($P{p_bico}) - length(replace($P{p_bico},':'))+1)

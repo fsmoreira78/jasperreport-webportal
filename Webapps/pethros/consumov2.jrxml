@@ -58,8 +58,9 @@ join tb_veiculo v on (v.cod_inquilino = a.cod_inquilino and v.cod_veiculo = a.co
 join tb_modelo m on (m.cod_inquilino = v.cod_inquilino and m.cod_modelo = v.cod_modelo)
 left outer join tb_operacao o on (o.cod_inquilino = a.cod_inquilino and o.cod_operacao = a.cod_operacao)
 where a.cod_inquilino = $P{p_inquilino} 
-  and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
+  and a.dta_abast_hora >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
   and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
+  and a.flg_status <> pkg_consts.PETHROS_STATUS_EXCLUIDO
   and nvl(a.cod_veiculo,0) = nvl($P{p_veiculo},nvl(a.cod_veiculo,0))
   and nvl(a.cod_proprietario,0) = nvl($P{p_proprietario},nvl(a.cod_proprietario,0))    
 order by p.nom_pessoa, m.dsc_modelo, a.cod_veiculo, a.dta_abast_hora]]>

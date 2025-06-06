@@ -58,10 +58,11 @@ left outer join tb_pessoa fr on (fr.cod_inquilino = a.cod_inquilino and fr.cod_p
 left outer join tb_operacao o on (o.cod_inquilino = a.cod_inquilino and o.cod_operacao  = a.cod_operacao)
 where a.cod_inquilino = $P{p_inquilino} 
   and a.cod_empresa =  $P{p_empresa} 
-  and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
+  and a.dta_abast_hora >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
   and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
   and a.cod_bico = nvl($P{p_bico},a.cod_bico)
   and a.flg_tipo = nvl( $P{p_tipo} ,a.flg_tipo)
+  and a.flg_status <> pkg_consts.PETHROS_STATUS_EXCLUIDO
 order by b.dsc_bico, a.dta_abast_hora]]>
 	</queryString>
 	<field name="DSC_BICO" class="java.lang.String"/>
