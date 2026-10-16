@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="abast_resumo" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="822" leftMargin="0" rightMargin="20" topMargin="5" bottomMargin="5" uuid="64ccb586-6e2d-4053-a29d-b10820e3326f">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -31,6 +31,7 @@
 	<parameter name="p_bico" class="java.lang.String"/>
 	<parameter name="p_veiculo" class="java.lang.String"/>
 	<parameter name="p_proprietario" class="java.lang.String"/>
+	<parameter name="p_timezone" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select b.dsc_bico,
  p.cod_integracao,
@@ -39,23 +40,23 @@
  b.flg_comboio,
  b.seq_bico,
  sum(a.qtd_abast) qtd_abast,
- max(a.num_encerrante) KEEP (DENSE_RANK LAST ORDER BY a.dta_abast_hora) max_encerrante,
- min(a.num_encerrante) KEEP (DENSE_RANK FIRST ORDER BY a.dta_abast_hora) min_encerrante,
- min(a.qtd_abast) KEEP (DENSE_RANK FIRST ORDER BY a.dta_abast_hora) min_abast
+ max(a.num_encerrante) KEEP (DENSE_RANK LAST ORDER BY a.utc_abast_hora) max_encerrante,
+ min(a.num_encerrante) KEEP (DENSE_RANK FIRST ORDER BY a.utc_abast_hora) min_encerrante,
+ min(a.qtd_abast) KEEP (DENSE_RANK FIRST ORDER BY a.utc_abast_hora) min_abast
  from webapps.tb_abast a
  join webapps.tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
  join webapps.tb_produto p on (p.cod_inquilino = a.cod_inquilino and p.cod_produto = a.cod_produto)
  where a.cod_inquilino = $P{p_inquilino} 
   and a.cod_empresa =  $P{p_empresa} 
-  and a.dta_abast_hora >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
-  and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
+  and  a.utc_abast_hora >= from_tz(to_timestamp($P{p_inicio}, 'ddmmyyyyhh24mi'), 'UTC')
+  and a.utc_abast_hora < from_tz(to_timestamp($P{p_termino}, 'ddmmyyyyhh24mi'), 'UTC')
   and a.flg_tipo in ('AB','CB')
-  and a.flg_status <> pkg_consts.PETHROS_STATUS_EXCLUIDO
+  and a.enm_status_abast <> pkg_consts_pethros.PETHROS_STATUS_EXCLUIDO
   and a.cod_bico in (select regexp_substr($P{p_bico},'[^:]+',1,level) value 
   	                                from dual 
   	                                connect by level <= length ($P{p_bico}) - length(replace($P{p_bico},':'))+1)
-  and nvl(a.cod_veiculo,0) = nvl($P{p_veiculo},nvl(a.cod_veiculo,0))
-  and nvl(a.cod_proprietario,0) = nvl($P{p_proprietario},nvl(a.cod_proprietario,0))  
+  and ($P{p_veiculo} is null or a.cod_veiculo = $P{p_veiculo})
+  and ($P{p_proprietario} is null or a.cod_proprietario = $P{p_proprietario})  
  group by b.dsc_bico,  p.cod_integracao, p.dsc_produto, a.flg_tipo, b.flg_comboio, b.seq_bico
  order by b.flg_comboio desc, b.seq_bico, b.dsc_bico]]>
 	</queryString>

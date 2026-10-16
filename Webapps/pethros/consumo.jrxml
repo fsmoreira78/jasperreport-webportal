@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consumo" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="134"/>
@@ -30,47 +30,50 @@
 	</parameter>
 	<parameter name="p_veiculo" class="java.lang.String"/>
 	<parameter name="p_proprietario" class="java.lang.String"/>
+	<parameter name="p_timezone" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select a.num_abast, 
-  a.dta_abast_hora,
-  a.cod_proprietario,
-  p.nom_pessoa nom_proprietario,
-  to_char(o.num_operacao) || ' - ' || o.dsc_operacao dsc_operacao,
-  a.cod_veiculo,
-  m.dsc_modelo,  
-  v.num_placa,
-  v.num_veiculo,
-  e.nom_pessoa nom_empresa,
-  b.seq_bico,
-  b.dsc_bico,
-  pr.dsc_produto,
-  a.flg_tipo,
-  a.qtd_abast,
-  a.flg_registrador,
-  a.num_registrador,
-  (select a2.num_registrador
-    from tb_abast a2
-   where a2.cod_inquilino = a.cod_inquilino
-     and a2.cod_veiculo = a.cod_veiculo
-     and a2.dta_abast_hora = (select max(a3.dta_abast_hora) 
-                                from tb_abast a3
-                                where a3.cod_inquilino = a.cod_inquilino
-                                  and a3.cod_veiculo  = a.cod_veiculo
-                                  and a3.dta_abast_hora < a.dta_abast_hora)) reg_anterior                                  
-from tb_abast a
-join tb_bico b on (b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico)
-join tb_produto pr on (pr.cod_inquilino = a.cod_inquilino and pr.cod_produto = a.cod_produto)
-join tb_pessoa p on (p.cod_inquilino = a.cod_inquilino and p.cod_pessoa = a.cod_proprietario)
-join tb_pessoa e on (e.cod_inquilino = a.cod_inquilino and e.cod_pessoa = a.cod_empresa)
-join tb_veiculo v on (v.cod_inquilino = a.cod_inquilino and v.cod_veiculo = a.cod_veiculo)
-join tb_modelo m on (m.cod_inquilino = v.cod_inquilino and m.cod_modelo = v.cod_modelo)
-left outer join tb_operacao o on (o.cod_inquilino = a.cod_inquilino and o.cod_operacao = a.cod_operacao)
-where a.cod_inquilino = $P{p_inquilino} 
-  and a.dta_abast_hora > to_date($P{p_inicio},'ddmmyyyyhh24mi') 
-  and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
-  and nvl(a.cod_veiculo,0) = nvl($P{p_veiculo},nvl(a.cod_veiculo,0))
-  and nvl(a.cod_proprietario,0) = nvl($P{p_proprietario},nvl(a.cod_proprietario,0))    
-order by p.nom_pessoa, m.dsc_modelo,  a.dta_abast_hora]]>
+		<![CDATA[with 
+abastecimentos as (
+    select a.*,
+           lag(a.num_registrador) over (
+               partition by a.cod_inquilino, a.cod_veiculo
+               order by a.utc_abast_hora, a.num_abast
+           ) reg_anterior
+      from tb_abast a
+    where a.cod_inquilino = $P{p_inquilino}
+         and a.utc_abast_hora < from_tz(to_timestamp($P{p_termino}, 'ddmmyyyyhh24mi'), 'UTC')
+         and a.enm_status_abast <> pkg_consts_pethros.PETHROS_STATUS_EXCLUIDO
+         and ($P{p_veiculo} is null or a.cod_veiculo = $P{p_veiculo})
+)
+select a.num_abast,
+       a.utc_abast_hora at time zone cast($P{p_timezone} as varchar2(100)) dta_abast_hora,
+       a.cod_proprietario,
+       p.nom_pessoa nom_proprietario,
+       to_char(o.num_operacao) || ' - ' || o.dsc_operacao dsc_operacao,
+       a.cod_veiculo,
+       m.dsc_modelo,
+       v.num_placa,
+       v.num_veiculo,
+       e.nom_empresa,
+       b.seq_bico,
+       b.dsc_bico,
+       pr.dsc_produto,
+       a.flg_tipo,
+       a.qtd_abast,
+       a.flg_registrador,
+       a.num_registrador,
+       a.reg_anterior
+  from abastecimentos a
+    join tb_bico b on b.cod_inquilino = a.cod_inquilino and b.cod_bico = a.cod_bico
+    join tb_produto pr on pr.cod_inquilino = a.cod_inquilino and pr.cod_produto = a.cod_produto
+    join tb_empresa e on e.cod_inquilino = a.cod_inquilino and e.cod_empresa = a.cod_empresa
+    join tb_pessoa p on p.cod_inquilino = a.cod_inquilino and p.cod_pessoa = a.cod_proprietario
+    join tb_veiculo v on v.cod_inquilino = a.cod_inquilino and v.cod_veiculo = a.cod_veiculo
+    join tb_modelo m on m.cod_inquilino = v.cod_inquilino and m.cod_modelo = v.cod_modelo
+    left join tb_operacao o on o.cod_inquilino = a.cod_inquilino and o.cod_operacao = a.cod_operacao
+ where a.utc_abast_hora >= from_tz(to_timestamp($P{p_inicio}, 'ddmmyyyyhh24mi'), 'UTC')
+      and ($P{p_proprietario} is null or a.cod_proprietario = $P{p_proprietario})
+ order by p.nom_pessoa, m.dsc_modelo,a.utc_abast_hora, a.num_abast]]>
 	</queryString>
 	<field name="NUM_ABAST" class="java.math.BigDecimal"/>
 	<field name="DTA_ABAST_HORA" class="java.sql.Timestamp"/>
@@ -405,7 +408,14 @@ order by p.nom_pessoa, m.dsc_modelo,  a.dta_abast_hora]]>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMM yyyy - HH:mm:ss", new java.util.Locale("pt","BR")).format(new java.util.Date()) + "    "]]></textFieldExpression>
+					<textFieldExpression><![CDATA[java.time.ZonedDateTime.now(
+    java.time.ZoneId.of($P{p_timezone})
+).format(
+    java.time.format.DateTimeFormatter.ofPattern(
+        "EEEE, dd MMMM yyyy - HH:mm:ss",
+        new java.util.Locale("pt", "BR")
+    )
+) + "    "]]></textFieldExpression>
 				</textField>
 				<textField pattern="">
 					<reportElement style="Footer" x="627" y="17" width="175" height="17" forecolor="#1E1E1E" uuid="e49e4968-ac3f-41c6-93c5-2f852a0063fa">
@@ -420,7 +430,25 @@ order by p.nom_pessoa, m.dsc_modelo,  a.dta_abast_hora]]>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Período " + (new SimpleDateFormat("dd/MM/yy HH:mm").format(new SimpleDateFormat("ddMMyyyyHHmm").parse($P{p_inicio}))) + " à " + (new SimpleDateFormat("dd/MM/yy HH:mm").format(new SimpleDateFormat("ddMMyyyyHHmm").parse($P{p_termino}))) + "    "]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Período " +
+java.time.LocalDateTime.parse(
+    $P{p_inicio},
+    java.time.format.DateTimeFormatter.ofPattern("ddMMyyyyHHmm")
+)
+.atZone(java.time.ZoneOffset.UTC)
+.withZoneSameInstant(java.time.ZoneId.of($P{p_timezone}))
+.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"))
++
+" à " +
+java.time.LocalDateTime.parse(
+    $P{p_termino},
+    java.time.format.DateTimeFormatter.ofPattern("ddMMyyyyHHmm")
+)
+.atZone(java.time.ZoneOffset.UTC)
+.withZoneSameInstant(java.time.ZoneId.of($P{p_timezone}))
+.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"))
++
+"    "]]></textFieldExpression>
 				</textField>
 				<textField evaluationTime="Report">
 					<reportElement key="" style="Footer" x="778" y="36" width="22" height="13" uuid="728bc2a4-2bf1-4cdf-933c-817f8c0a3d17">

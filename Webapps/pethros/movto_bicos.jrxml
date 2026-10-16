@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="movto_bicos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="134"/>
@@ -36,12 +36,12 @@
 	<parameter name="p_bico" class="java.lang.String">
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
+	<parameter name="p_timezone" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select b.dsc_bico,
  p.dsc_produto,
  a.flg_tipo,
- a.dta_abast_hora,
- a.hor_abast,
+ a.utc_abast_hora at time zone cast($P{p_timezone} as varchar2(100)) dta_abast_hora,
  a.num_registrador,
  a.flg_registrador,
  a.flg_tag,
@@ -58,18 +58,17 @@ left outer join tb_pessoa fr on (fr.cod_inquilino = a.cod_inquilino and fr.cod_p
 left outer join tb_operacao o on (o.cod_inquilino = a.cod_inquilino and o.cod_operacao  = a.cod_operacao)
 where a.cod_inquilino = $P{p_inquilino} 
   and a.cod_empresa =  $P{p_empresa} 
-  and a.dta_abast_hora >= to_date($P{p_inicio},'ddmmyyyyhh24mi') 
-  and a.dta_abast_hora < to_date($P{p_termino},'ddmmyyyyhh24mi')
+  and a.utc_abast_hora >=from_tz(to_timestamp($P{p_inicio}, 'ddmmyyyyhh24mi'), 'UTC')
+  and a.utc_abast_hora < from_tz(to_timestamp($P{p_termino}, 'ddmmyyyyhh24mi'), 'UTC')
   and a.cod_bico = nvl($P{p_bico},a.cod_bico)
   and a.flg_tipo = nvl( $P{p_tipo} ,a.flg_tipo)
-  and a.flg_status <> pkg_consts.PETHROS_STATUS_EXCLUIDO
-order by b.dsc_bico, a.dta_abast_hora]]>
+  and a.enm_status_abast <> pkg_consts_pethros.PETHROS_STATUS_EXCLUIDO
+order by b.dsc_bico, a.utc_abast_hora]]>
 	</queryString>
 	<field name="DSC_BICO" class="java.lang.String"/>
 	<field name="DSC_PRODUTO" class="java.lang.String"/>
 	<field name="FLG_TIPO" class="java.lang.String"/>
 	<field name="DTA_ABAST_HORA" class="java.sql.Timestamp"/>
-	<field name="HOR_ABAST" class="java.lang.String"/>
 	<field name="NUM_REGISTRADOR" class="java.math.BigDecimal"/>
 	<field name="FLG_REGISTRADOR" class="java.lang.String"/>
 	<field name="FLG_TAG" class="java.lang.String"/>
@@ -383,7 +382,25 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Período " + (new SimpleDateFormat("dd/MM/yy HH:mm").format(new SimpleDateFormat("ddMMyyyyHHmm").parse($P{p_inicio}))) + " à " + (new SimpleDateFormat("dd/MM/yy HH:mm").format(new SimpleDateFormat("ddMMyyyyHHmm").parse($P{p_termino}))) + "    "]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Período " +
+java.time.LocalDateTime.parse(
+    $P{p_inicio},
+    java.time.format.DateTimeFormatter.ofPattern("ddMMyyyyHHmm")
+)
+.atZone(java.time.ZoneOffset.UTC)
+.withZoneSameInstant(java.time.ZoneId.of($P{p_timezone}))
+.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"))
++
+" à " +
+java.time.LocalDateTime.parse(
+    $P{p_termino},
+    java.time.format.DateTimeFormatter.ofPattern("ddMMyyyyHHmm")
+)
+.atZone(java.time.ZoneOffset.UTC)
+.withZoneSameInstant(java.time.ZoneId.of($P{p_timezone}))
+.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"))
++
+"    "]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement style="Footer" x="379" y="0" width="175" height="17" uuid="69f8653d-5cbc-44ac-887f-f69a8175b0c4">
@@ -399,7 +416,14 @@ order by b.dsc_bico, a.dta_abast_hora]]>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMM yyyy - HH:mm:ss", new java.util.Locale("pt","BR")).format(new java.util.Date()) + "    "]]></textFieldExpression>
+					<textFieldExpression><![CDATA[java.time.ZonedDateTime.now(
+    java.time.ZoneId.of($P{p_timezone})
+).format(
+    java.time.format.DateTimeFormatter.ofPattern(
+        "EEEE, dd MMMM yyyy - HH:mm:ss",
+        new java.util.Locale("pt", "BR")
+    )
+) + "    "]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
